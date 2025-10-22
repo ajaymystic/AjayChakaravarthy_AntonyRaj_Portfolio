@@ -4,6 +4,8 @@ Welcome to my personal portfolio repository!
 This portfolio showcases my work, skills, and projects that reflect my journey as a Web Developer.  
 Here, you'll find a variety of projects that highlight my abilities including front-end development, back-end integration, responsive design, and interactive animations.
 
+![alt text](image.png)
+
 ---
 
 ## 📋 Table of Contents
