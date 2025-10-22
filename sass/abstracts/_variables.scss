@@ -1,0 +1,52 @@
+// Color Palette
+$primary-color: #2C3E50;
+$secondary-color: #3498DB;
+$accent-color: #E74C3C;
+$text-dark: #2C3E50;
+$text-light: #ECF0F1;
+$bg-light: #FFFFFF;
+$bg-dark: #34495E;
+
+// Typography
+$font-primary: 'Inter', 'Helvetica Neue', sans-serif;
+$font-secondary: 'Playfair Display', Georgia, serif;
+$font-code: 'Fira Code', 'Courier New', monospace;
+
+$font-size-base: 16px;
+$font-size-small: 14px;
+$font-size-large: 20px;
+$font-size-h1: 48px;
+$font-size-h2: 36px;
+$font-size-h3: 28px;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 48px;
+$spacing-xl: 72px;
+
+// Breakpoints
+$breakpoint-mobile: 576px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 992px;
+$breakpoint-wide: 1200px;
+
+// Layout
+$max-width: 1200px;
+$header-height: 80px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Shadows
+$shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-large: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+// Border Radius
+$radius-small: 4px;
+$radius-medium: 8px;
+$radius-large: 16px;
