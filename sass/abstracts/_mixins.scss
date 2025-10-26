@@ -1,6 +1,7 @@
-// Responsive breakpoints
+@use 'variables' as *;
+
 @mixin mobile {
-  @media (max-width: #{$breakpoint-mobile}) {
+  @media (max-width: #{$breakpoint-tablet - 1px}) {
     @content;
   }
 }
@@ -36,40 +37,7 @@
   align-items: center;
 }
 
-// Typography
-@mixin heading-style {
-  font-family: $font-secondary;
-  font-weight: 700;
-  line-height: 1.2;
-  color: $text-dark;
-}
-
 // Transitions
-@mixin smooth-transition($property: all) {
+@mixin transition($property: all) {
   transition: $property $transition-medium;
-}
-
-// Hover effects
-@mixin hover-lift {
-  transition: transform $transition-medium, box-shadow $transition-medium;
-  
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: $shadow-large;
-  }
-}
-
-// Button base
-@mixin button-base {
-  display: inline-block;
-  padding: $spacing-sm $spacing-md;
-  border-radius: $radius-medium;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  @include smooth-transition(all);
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
 }

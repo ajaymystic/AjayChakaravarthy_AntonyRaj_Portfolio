@@ -4,13 +4,14 @@ $secondary-color: #3498DB;
 $accent-color: #E74C3C;
 $text-dark: #2C3E50;
 $text-light: #ECF0F1;
+$text-muted: #7F8C8D;
 $bg-light: #FFFFFF;
 $bg-dark: #34495E;
+$bg-section: #F8F9FA;
 
 // Typography
-$font-primary: 'Inter', 'Helvetica Neue', sans-serif;
+$font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 $font-secondary: 'Playfair Display', Georgia, serif;
-$font-code: 'Fira Code', 'Courier New', monospace;
 
 $font-size-base: 16px;
 $font-size-small: 14px;
@@ -18,6 +19,7 @@ $font-size-large: 20px;
 $font-size-h1: 48px;
 $font-size-h2: 36px;
 $font-size-h3: 28px;
+$font-size-h4: 24px;
 
 // Spacing
 $spacing-xs: 8px;
@@ -29,12 +31,12 @@ $spacing-xl: 72px;
 // Breakpoints
 $breakpoint-mobile: 576px;
 $breakpoint-tablet: 768px;
-$breakpoint-desktop: 992px;
-$breakpoint-wide: 1200px;
+$breakpoint-desktop: 1200px;
+$breakpoint-wide: 1920px;
 
 // Layout
 $max-width: 1200px;
-$header-height: 80px;
+$header-height: 70px;
 
 // Transitions
 $transition-fast: 0.2s ease;
