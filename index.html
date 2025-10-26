@@ -3,9 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Ajay Chakaravarthy Antony Raj - Full Stack Developer Portfolio">
+    <meta name="author" content="Ajay Chakaravarthy Antony Raj">
+    <title>Ajay Chakaravarthy Antony Raj | Full Stack Developer</title>
+    
+    <!-- Plyr CSS for Video Player -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <nav class="grid-con">
+            <div class="col-span-4 m-col-span-12 nav-container">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <h2>ACAR</h2>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <ul class="desktop-nav">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-6 l-col-span-6">
+                <h1>Hi, I'm Ajay Chakaravarthy</h1>
+                <h2>Full Stack Developer</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <a href="projects.html" class="btn">View My Work</a>
+                <a href="contact.html" class="btn btn-outline">Contact Me</a>
+            </div>
+            <div class="col-span-4 m-col-span-6 l-col-span-6">
+                <img src="images/hero-placeholder.jpg" alt="Hero Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section id="about-preview">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-12">
+                <h2>About Me</h2>
+                <p>A brief introduction about yourself goes here</p>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <div class="card">
+                    <h3>Clean Code</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <div class="card">
+                    <h3>Creative Design</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <div class="card">
+                    <h3>Performance</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="featured-projects">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-12">
+                <h2>Featured Projects</h2>
+                <p>Showcasing my recent work</p>
+            </div>
+            
+            <div class="col-span-4 m-col-span-6 l-col-span-6">
+                <div class="project-card">
+                    <img src="images/project-placeholder-1.jpg" alt="Project 1">
+                    <h3>Project Title 1</h3>
+                    <p>Project description goes here. Lorem ipsum dolor sit amet.</p>
+                    <a href="projects.html" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="col-span-4 m-col-span-6 l-col-span-6">
+                <div class="project-card">
+                    <img src="images/project-placeholder-2.jpg" alt="Project 2">
+                    <h3>Project Title 2</h3>
+                    <p>Project description goes here. Lorem ipsum dolor sit amet.</p>
+                    <a href="projects.html" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video-section">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-12">
+                <h2>Video Showcase</h2>
+            </div>
+            <div class="col-span-4 m-col-span-10 m-col-start-2 l-col-span-8 l-col-start-3">
+                <video id="player" playsinline controls>
+                    <source src="videos/demo.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-12">
+                <h2>Technical Skills</h2>
+            </div>
+            <div class="col-span-4 m-col-span-12">
+                <div class="skills-grid">
+                    <div class="skill">HTML5</div>
+                    <div class="skill">CSS3</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">PHP</div>
+                    <div class="skill">MySQL</div>
+                    <div class="skill">SASS</div>
+                    <div class="skill">Git</div>
+                    <div class="skill">Responsive Design</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="cta">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-12">
+                <h2>Let's Work Together</h2>
+                <p>I'm always open to discussing new projects and opportunities.</p>
+                <a href="contact.html" class="btn">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <h3>Ajay Chakaravarthy</h3>
+                <p>Full Stack Developer</p>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <h4>Connect</h4>
+                <p>LinkedIn | GitHub | Email</p>
+            </div>
+            <div class="col-span-4 m-col-span-12">
+                <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/main.js"></script>
     
 </body>
 </html>
