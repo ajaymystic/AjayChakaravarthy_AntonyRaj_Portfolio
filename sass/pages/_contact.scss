@@ -1,0 +1,112 @@
+// ================================
+// CONTACT PAGE STYLES
+// ================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'sass:color';
+
+#hero {
+    .hero-content {
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
+
+#contact-section {
+    background-color: $bg-light;
+    
+    h2 {
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        margin-bottom: $spacing-md;
+    }
+}
+
+.contact-info {
+    margin-top: $spacing-lg;
+}
+
+.contact-item {
+    margin-bottom: $spacing-lg;
+    
+    h4 {
+        color: $primary-color;
+        margin-bottom: $spacing-xs;
+        font-size: 18px;
+    }
+    
+    p {
+        color: $text-muted;
+        margin-bottom: 0;
+    }
+    
+    a {
+        color: $secondary-color;
+        @include transition(color);
+        
+        &:hover {
+            color: color.adjust($secondary-color, $lightness: -10%);
+            text-decoration: underline;
+        }
+    }
+}
+.contact-form {
+    background-color: $bg-section;
+    padding: $spacing-lg;
+    border-radius: $radius-medium;
+    
+    @include mobile {
+        padding: $spacing-md;
+    }
+}
+
+.form-group {
+    margin-bottom: $spacing-md;
+    
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: $spacing-xs;
+        color: $text-dark;
+    }
+    
+    input,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: $radius-small;
+        font-family: $font-primary;
+        font-size: $font-size-base;
+        @include transition(border-color);
+        
+        &:focus {
+            outline: none;
+            border-color: $secondary-color;
+        }
+        
+        &::placeholder {
+            color: #999;
+        }
+    }
+    
+    textarea {
+        resize: vertical;
+        min-height: 150px;
+    }
+}
+
+.contact-form .btn {
+    margin: 0;
+    width: 100%;
+    
+    @include tablet {
+        width: auto;
+    }
+}

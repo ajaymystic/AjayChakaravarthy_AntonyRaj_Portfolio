@@ -1,0 +1,46 @@
+// ================================
+// ABOUT PAGE STYLES
+// ================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#bio {
+    background-color: $bg-light;
+    
+    img {
+        width: 100%;
+        border-radius: $radius-medium;
+        margin-bottom: $spacing-md;
+        
+        @include tablet {
+            margin-bottom: 0;
+        }
+    }
+    
+    h2 {
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        margin-bottom: $spacing-md;
+    }
+}
+
+#experience {
+    background-color: $bg-light;
+    
+    .card {
+        text-align: left;
+        
+        h4 {
+            font-size: 18px;
+            color: $secondary-color;
+            margin-top: $spacing-sm;
+        }
+        
+        p {
+            margin-bottom: $spacing-xs;
+        }
+    }
+}

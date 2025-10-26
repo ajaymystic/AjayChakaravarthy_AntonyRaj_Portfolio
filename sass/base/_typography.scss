@@ -1,0 +1,60 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-secondary;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+}
+
+h1 {
+    font-size: 36px;
+    
+    @include tablet {
+        font-size: 42px;
+    }
+    
+    @include desktop {
+        font-size: $font-size-h1;
+    }
+}
+
+h2 {
+    font-size: 28px;
+    
+    @include tablet {
+        font-size: 32px;
+    }
+    
+    @include desktop {
+        font-size: $font-size-h2;
+    }
+}
+
+h3 {
+    font-size: 22px;
+    
+    @include desktop {
+        font-size: $font-size-h3;
+    }
+}
+
+h4 {
+    font-size: 20px;
+    
+    @include desktop {
+        font-size: $font-size-h4;
+    }
+}
+
+p {
+    margin-bottom: $spacing-sm;
+    line-height: 1.8;
+    color: $text-muted;
+}
+
+.text-center {
+    text-align: center;
+}

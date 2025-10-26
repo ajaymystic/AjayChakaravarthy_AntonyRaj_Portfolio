@@ -1,0 +1,38 @@
+// ================================
+// PROJECTS PAGE STYLES
+// ================================
+
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+#all-projects {
+    background-color: $bg-light;
+    
+    .project-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        
+        img {
+            flex-shrink: 0;
+        }
+        
+        h3 {
+            flex-shrink: 0;
+        }
+        
+        p {
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            flex-shrink: 0;
+            padding-bottom: $spacing-sm;
+        }
+        
+        .btn {
+            flex-shrink: 0;
+        }
+    }
+}
