@@ -1,0 +1,132 @@
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
+// Sections
+section {
+    padding: $spacing-xl 0;
+    
+    @include tablet {
+        padding: 80px 0;
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: $spacing-lg;
+    
+    h2 {
+        margin-bottom: $spacing-sm;
+    }
+    
+    p {
+        color: $text-muted;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+// Hero Section
+#hero {
+    background-color: $bg-section;
+    padding: 80px 0;
+    
+    @include tablet {
+        padding: 100px 0;
+    }
+    
+    h1 {
+        margin-bottom: $spacing-sm;
+    }
+    
+    h2 {
+        color: $secondary-color;
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        margin-bottom: $spacing-lg;
+    }
+    
+    img {
+        width: 100%;
+        border-radius: $radius-medium;
+        margin-top: $spacing-md;
+        
+        @include tablet {
+            margin-top: 0;
+        }
+    }
+}
+
+// About Preview Section
+#about-preview {
+    background-color: $bg-light;
+}
+
+// Projects Section
+#featured-projects {
+    background-color: $bg-section;
+}
+
+// Video Section
+#video-section {
+    background-color: $bg-light;
+    
+    video {
+        width: 100%;
+        border-radius: $radius-medium;
+    }
+}
+
+// Skills Section
+#skills {
+    background-color: $bg-section;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-md;
+    
+    @include tablet {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    @include desktop {
+        grid-template-columns: repeat(4, 1fr);
+        gap: $spacing-lg;
+    }
+}
+
+.skill {
+    background-color: $bg-light;
+    padding: $spacing-md;
+    border-radius: $radius-medium;
+    text-align: center;
+    font-weight: 600;
+    color: $primary-color;
+    box-shadow: $shadow-small;
+    @include transition(transform);
+    
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: $shadow-medium;
+    }
+}
+
+// CTA Section
+#cta {
+    background-color: $primary-color;
+    color: $text-light;
+    text-align: center;
+    
+    h2 {
+        color: $text-light;
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        color: $text-light;
+        margin-bottom: $spacing-lg;
+    }
+}
