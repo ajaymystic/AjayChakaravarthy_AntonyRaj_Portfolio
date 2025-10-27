@@ -1,0 +1,33 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/variables' as *;
+
+
+
+// Hero specific styles for homepage
+#hero {
+    .hero-content {
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+}
+
+// About preview on homepage
+#about-preview {
+    .about-card {
+        &:hover {
+            transform: translateY(-8px);
+        }
+    }
+}
+
+// Featured projects on homepage
+#featured-projects {
+    .project-card-wrapper {
+        @include tablet {
+            display: flex;
+        }
+    }
+}

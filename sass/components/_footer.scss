@@ -1,0 +1,45 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+footer {
+    background-color: $primary-color;
+    color: $text-light;
+    padding: $spacing-xl 0 $spacing-md;
+    
+    h3, h4 {
+        color: $text-light;
+        margin-bottom: $spacing-md;
+    }
+    
+    p {
+        color: $text-light;
+        opacity: 0.8;
+    }
+    
+    ul {
+        li {
+            margin-bottom: $spacing-xs;
+        }
+        
+        a {
+            color: $text-light;
+            opacity: 0.8;
+            @include transition(opacity);
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    
+    .col-span-4:last-child {
+        text-align: center;
+        margin-top: $spacing-lg;
+        padding-top: $spacing-md;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        
+        @include tablet {
+            grid-column: span 12;
+        }
+    }
+}

@@ -1,0 +1,122 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+#main-header {
+    background-color: $bg-light;
+    box-shadow: $shadow-small;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    @include flex-between;
+    padding: $spacing-md 0;
+}
+
+// Logo
+.logo {
+    h2 {
+        font-size: 24px;
+        color: $primary-color;
+        margin-bottom: 0;
+    }
+}
+
+// Desktop Navigation
+.desktop-nav {
+    display: none;
+    gap: $spacing-md;
+    
+    @include tablet {
+        display: flex;
+    }
+    
+    a {
+        color: $text-dark;
+        font-weight: 500;
+        padding: $spacing-xs $spacing-sm;
+        @include transition(color);
+        
+        &:hover,
+        &.active {
+            color: $secondary-color;
+        }
+    }
+}
+
+// Hamburger Menu
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 25px;
+    z-index: 101;
+    
+    @include tablet {
+        display: none;
+    }
+    
+    span {
+        width: 100%;
+        height: 3px;
+        background-color: $primary-color;
+        @include transition(all);
+    }
+    
+    &.active {
+        span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+        
+        span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+    }
+}
+
+// Mobile Menu
+.mobile-menu {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - #{$header-height});
+    background-color: $primary-color;
+    transform: translateX(100%);
+    @include transition(transform);
+    z-index: 99;
+    
+    @include tablet {
+        display: none;
+    }
+    
+    &.active {
+        transform: translateX(0);
+    }
+    
+    ul {
+        padding: $spacing-lg $spacing-md;
+    }
+    
+    li {
+        margin-bottom: $spacing-md;
+    }
+    
+    a {
+        color: $text-light;
+        font-size: $font-size-large;
+        display: block;
+        padding: $spacing-sm;
+        @include transition(color);
+        
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
