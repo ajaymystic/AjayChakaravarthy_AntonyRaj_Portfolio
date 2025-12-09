@@ -1,122 +1,250 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-#main-header {
-    background-color: $bg-light;
-    box-shadow: $shadow-small;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.nav-container {
-    @include flex-between;
-    padding: $spacing-md 0;
-}
-
-// Logo
-.logo {
-    h2 {
-        font-size: 24px;
-        color: $primary-color;
-        margin-bottom: 0;
-    }
-}
-
-// Desktop Navigation
-.desktop-nav {
-    display: none;
-    gap: $spacing-md;
-    
-    @include tablet {
-        display: flex;
-    }
-    
-    a {
-        color: $text-dark;
-        font-weight: 500;
-        padding: $spacing-xs $spacing-sm;
-        @include transition(color);
-        
-        &:hover,
-        &.active {
-            color: $secondary-color;
-        }
-    }
-}
-
-// Hamburger Menu
-.hamburger {
+.header {
+  width: 100%;
+  background-color: rgba($soft-white, 0.98);
+  position: sticky;
+  top: 0;
+  z-index: $z-sticky;
+  box-shadow: $shadow-subtle;
+  padding: $spacing-sm 0;
+  
+  &__nav {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-md;
+    padding: 0 $spacing-md;
+    
+    @include mobile {
+      padding: 0 $spacing-sm;
+    }
+  }
+  
+  // Logo (Left)
+  &__logo {
+    flex-shrink: 0;
+    // display: flex;
+    // align-items: center;
+    
+    img {
+      height: 150px;
+      width: auto;
+      
+      @include mobile {
+        height: 50px;
+      }
+    }
+  }
+  
+  // Navigation Menu (Desktop Only)
+  .nav__menu {
+    display: flex;
+    gap: $spacing-lg;
+    align-items: center;
+    
+    // Hide on mobile AND tablet (below 1024px)
+    @media (max-width: #{$breakpoint-desktop - 1px}) {
+      display: none;
+    }
+  }
+  
+  .nav__link {
+    font-family: $font-primary;
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $text-dark;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: $spacing-xs 0;
+    position: relative;
+    @include transition(color);
+    
+    &:hover {
+      color: $secondary-color;
+    }
+    
+    &.active {
+      color: $secondary-color;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $secondary-color;
+      }
+    }
+  }
+  
+  // Social Icons (Desktop Only)
+  .nav__social-icons {
+    display: flex;
+    gap: $spacing-sm;
+    align-items: center;
+    
+    // Hide on mobile AND tablet (below 1024px)
+    @media (max-width: #{$breakpoint-desktop - 1px}) {
+      display: none;
+    }
+  }
+  
+  .nav__social-link {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-dark;
+    font-size: 18px;
+    @include transition(all);
+    
+    &:hover {
+      color: $secondary-color;
+      transform: translateY(-2px);
+    }
+  }
+  
+  // Hamburger (Mobile & Tablet)
+  .hamburger {
+    display: none;
     flex-direction: column;
     gap: 5px;
-    width: 30px;
-    height: 25px;
-    z-index: 101;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-xs;
     
-    @include tablet {
-        display: none;
+    // Show on mobile AND tablet (below 1024px)
+    @media (max-width: #{$breakpoint-desktop - 1px}) {
+      display: flex;
     }
     
-    span {
-        width: 100%;
-        height: 3px;
-        background-color: $primary-color;
-        @include transition(all);
+    &__line {
+      width: 25px;
+      height: 2px;
+      background-color: $text-dark;
+      @include transition(all);
     }
     
     &.active {
-        span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-        
-        span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
+      .hamburger__line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      .hamburger__line:nth-child(2) {
+        opacity: 0;
+      }
+      
+      .hamburger__line:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
     }
+  }
 }
 
-// Mobile Menu
+// Mobile Menu Overlay
 .mobile-menu {
-    position: fixed;
-    top: $header-height;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - #{$header-height});
-    background-color: $primary-color;
-    transform: translateX(100%);
-    @include transition(transform);
-    z-index: 99;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: $primary-color;
+  z-index: $z-modal;
+  @include transition(right);
+  overflow-y: auto;
+  
+  &.active {
+    right: 0;
+  }
+  
+  // Close Button (Top Right)
+  &__close {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($text-light, 0.1);
+    border: none;
+    border-radius: $radius-small;
+    color: $text-light;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    @include transition(all);
     
-    @include tablet {
-        display: none;
+    &:hover {
+      background-color: $secondary-color;
+      transform: rotate(90deg);
     }
     
+    &:active {
+      transform: rotate(90deg) scale(0.95);
+    }
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: $spacing-xl;
+    padding: $spacing-xl;
+  }
+  
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    align-items: center;
+  }
+  
+  &__link {
+    font-family: $font-primary;
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $text-light;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    @include transition(color);
+    
+    &:hover,
     &.active {
-        transform: translateX(0);
+      color: $secondary-color;
     }
+  }
+  
+  &__social {
+    display: flex;
+    gap: $spacing-md;
+  }
+  
+  &__social-link {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($text-light, 0.1);
+    border-radius: $radius-small;
+    color: $text-light;
+    font-size: 20px;
+    @include transition(all);
     
-    ul {
-        padding: $spacing-lg $spacing-md;
+    &:hover {
+      background-color: $secondary-color;
+      transform: scale(1.1);
     }
-    
-    li {
-        margin-bottom: $spacing-md;
-    }
-    
-    a {
-        color: $text-light;
-        font-size: $font-size-large;
-        display: block;
-        padding: $spacing-sm;
-        @include transition(color);
-        
-        &:hover {
-            color: $secondary-color;
-        }
-    }
+  }
 }

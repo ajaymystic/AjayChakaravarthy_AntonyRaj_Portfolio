@@ -1,60 +1,137 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+@use 'sass:color';
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: $font-secondary;
-    font-weight: 700;
-    line-height: 1.2;
-    color: $primary-color;
-    margin-bottom: $spacing-sm;
+// Google Fonts Import
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+// Body Text
+body {
+  font-family: $font-secondary;
+  font-size: $font-size-base;
+  font-weight: 400;
+  color: $text-dark;
+  line-height: 1.6;
 }
 
+// Headings
 h1 {
-    font-size: 36px;
-    
-    @include tablet {
-        font-size: 42px;
-    }
-    
-    @include desktop {
-        font-size: $font-size-h1;
-    }
+  margin-bottom: $spacing-md;
+  @include heading-1;
 }
 
 h2 {
-    font-size: 28px;
-    
-    @include tablet {
-        font-size: 32px;
-    }
-    
-    @include desktop {
-        font-size: $font-size-h2;
-    }
+  margin-bottom: $spacing-md;
+  @include heading-2;
 }
 
 h3 {
-    font-size: 22px;
-    
-    @include desktop {
-        font-size: $font-size-h3;
-    }
+  margin-bottom: $spacing-sm;
+  @include heading-3;
 }
 
-h4 {
-    font-size: 20px;
-    
-    @include desktop {
-        font-size: $font-size-h4;
-    }
+h4,
+h5,
+h6 {
+  font-family: $font-primary;
+  font-weight: 600;
+  margin-bottom: $spacing-sm;
 }
 
+// Paragraphs
 p {
-    margin-bottom: $spacing-sm;
-    line-height: 1.8;
-    color: $text-muted;
+  margin-bottom: $spacing-sm;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
+// Links
+a {
+  color: $accent-color;
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: color.adjust($accent-color, $lightness: -10%);
+  }
+}
+
+// Strong & Bold
+strong,
+b {
+  font-weight: 700;
+}
+
+// Emphasis & Italic
+em,
+i {
+  font-style: italic;
+}
+
+// Small Text
+small {
+  font-size: $font-size-small;
+}
+
+// Code
+code,
+pre {
+  font-family: 'Courier New', monospace;
+  background-color: $bg-section;
+  padding: 2px 4px;
+  border-radius: $radius-small;
+}
+
+// Utility Classes
 .text-center {
-    text-align: center;
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-muted {
+  color: $text-muted;
+}
+
+.text-light {
+  color: $text-light;
+}
+
+.text-primary {
+  color: $primary-color;
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+// Section Titles - FIXED: All properties BEFORE @include
+.section-title {
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  position: relative;
+  @include heading-2;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: $accent-color;
+    margin: $spacing-sm auto 0;
+    border-radius: 2px;
+  }
 }

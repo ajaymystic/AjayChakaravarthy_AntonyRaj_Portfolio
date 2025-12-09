@@ -1,54 +1,128 @@
-// Color Palette
-$primary-color: #2C3E50;
-$secondary-color: #3498DB;
-$accent-color: #E74C3C;
-$text-dark: #2C3E50;
-$text-light: #ECF0F1;
-$text-muted: #7F8C8D;
+@use 'sass:color';
+
+// Color Palette - Primary Option 1
+$primary-color: #2B2D42;      // Deep Charcoal
+$bg-color: #EDF2F4;           // Soft White
+$accent-color: #0077B6;       // Electric Blue
+$soft-white: #EDF2F4;        // Off White
+$secondary-color: #EF476F;    // Warm Coral
+$text-muted: #8D99AE;         // Soft Gray
+$light-gray: #E5E7EB;
+$soft-gray: #F3F4F6;
+
+// Alternative colors (Option 2)
+$violet-purple: #5C33F6;
+$aqua-blue: #4FD1C5;
+$off-white: #F5F5F5;
+
+// Text colors
+$text-color: $primary-color;
+$text-dark: $primary-color;
+$text-light: $bg-color;
+$heading-color: $primary-color;
+
+// Background colors
+$bg-section: color.adjust($bg-color, $lightness: 2%);
 $bg-light: #FFFFFF;
-$bg-dark: #34495E;
-$bg-section: #F8F9FA;
+$card-bg: #FFFFFF;
 
 // Typography
-$font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-$font-secondary: 'Playfair Display', Georgia, serif;
+$font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$font-primary: $font-heading;
+$font-secondary: $font-body;
 
-$font-size-base: 16px;
-$font-size-small: 14px;
-$font-size-large: 20px;
-$font-size-h1: 48px;
-$font-size-h2: 36px;
-$font-size-h3: 28px;
-$font-size-h4: 24px;
+// Font sizes
+$font-size-xxl: 3.5rem;   // 56px
+$font-size-xl: 3rem;      // 48px
+$font-size-lg: 2rem;      // 32px
+$font-size-large: 1.125rem; // 18px
+$font-size-md: 1.5rem;    // 24px
+$font-size-base: 1rem;    // 16px
+$font-size-sm: 0.875rem;  // 14px
+$font-size-small: 0.875rem; // 14px
+$font-size-xs: 0.75rem;   // 12px
+
+// Heading sizes (responsive)
+$h1-desktop: 3.5rem;      // ADD THESE
+$h2-desktop: 3rem;
+$h3-desktop: 2rem;
+$h1-mobile: 2rem;
+$h2-mobile: 1.75rem;
+$h3-mobile: 1.5rem;
+
+// Font weights
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Line heights
+$line-height-base: 1.6;
+$line-height-heading: 1.2;
 
 // Spacing
-$spacing-xs: 8px;
-$spacing-sm: 16px;
-$spacing-md: 24px;
-$spacing-lg: 48px;
-$spacing-xl: 72px;
+$spacing-xs: 0.5rem;   // 8px
+$spacing-sm: 1rem;     // 16px
+$spacing-md: 2rem;     // 32px
+$spacing-lg: 3rem;     // 48px
+$spacing-xl: 4rem;     // 64px
+$spacing-xxl: 6rem;    // 96px
 
-// Breakpoints
-$breakpoint-mobile: 576px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1200px;
-$breakpoint-wide: 1920px;
-
-// Layout
-$max-width: 1200px;
-$header-height: 70px;
-
-// Transitions
-$transition-fast: 0.2s ease;
-$transition-medium: 0.3s ease;
-$transition-slow: 0.5s ease;
-
-// Shadows
-$shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
-$shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
-$shadow-large: 0 8px 16px rgba(0, 0, 0, 0.2);
-
-// Border Radius
+// Border radius
+$border-radius: 8px;
+$border-radius-sm: 4px;
+$border-radius-lg: 16px;
 $radius-small: 4px;
 $radius-medium: 8px;
-$radius-large: 16px;
+$radius-large: 12px;
+$radius-round: 50%;
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-fast: all 0.15s ease;
+$transition-slow: all 0.5s ease;
+$transition-medium: all 0.3s ease;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba($primary-color, 0.1);
+$shadow-md: 0 4px 8px rgba($primary-color, 0.15);
+$shadow-lg: 0 8px 16px rgba($primary-color, 0.2);
+$shadow-small: 0 2px 8px rgba($primary-color, 0.1);
+$shadow-medium: 0 4px 12px rgba($primary-color, 0.15);
+$shadow-large: 0 8px 24px rgba($primary-color, 0.2);
+$shadow-subtle: 0 1px 3px rgba($primary-color, 0.08);
+
+// Breakpoints
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1920px;
+
+// Container
+$container-max-width: 1200px;
+$container-padding: $spacing-md;
+$tablet-container-padding: $spacing-md;
+$mobile-container-padding: $spacing-sm;
+$tablet-content-max-width: 900px;
+$mobile-content-max-width: 100%;
+
+// Header heights
+$header-height: 80px;
+$tablet-header-height: 70px;
+$mobile-header-height: 60px;
+
+
+// Grid
+$grid-columns: 12;
+$grid-gap: $spacing-md;
+
+// Z-index layers
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-sticky: 1020; 
+$z-modal: 1050;
