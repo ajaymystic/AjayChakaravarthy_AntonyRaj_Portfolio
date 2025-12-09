@@ -1,0 +1,249 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ================================
+// TABLET STYLES (768px)
+// ================================
+@media (max-width: #{ $breakpoint-desktop - 1px }) and (min-width: #{ $breakpoint-tablet }) {
+  
+  // Header adjustments for tablet
+  .header {
+    padding: 0 $tablet-container-padding;
+    
+    .nav {
+      padding-left: $tablet-container-padding;
+      padding-right: $tablet-container-padding;
+    }
+  }
+  
+  // Hero section for tablet
+  .hero {
+    padding: $spacing-xl $tablet-container-padding;
+    
+    &__content {
+      max-width: $tablet-content-max-width;
+      margin: 0 auto;
+    }
+    
+    &__title {
+      font-size: 48px;
+    }
+    
+    &__image img {
+      max-width: 267px;
+      height: auto;
+    }
+  }
+  
+  // Skills section for tablet
+  .skills {
+    &__grid {
+      grid-template-columns: 1fr;
+      max-width: $tablet-content-max-width;
+      margin: 0 auto;
+    }
+  }
+  
+  // Projects for tablet
+  .projects__grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 548px;
+    margin: 0 auto;
+  }
+  
+  // Container adjustments
+  .container {
+    padding-left: $tablet-container-padding;
+    padding-right: $tablet-container-padding;
+  }
+}
+
+// ================================
+// MOBILE STYLES (375px and below)
+// ================================
+@media (max-width: #{ $breakpoint-tablet - 1px }) {
+  
+  // Header adjustments for mobile
+  .header {
+    padding: 0 $mobile-container-padding;
+    height: $mobile-header-height;
+    
+    .nav {
+      padding: $spacing-sm $mobile-container-padding;
+      
+      &__logo {
+        font-size: 24px;
+      }
+    }
+  }
+  
+  // Hero section for mobile
+  .hero {
+    padding: $spacing-lg $mobile-container-padding;
+    
+    &__title {
+      font-size: 36px;
+    }
+    
+    &__subtitle {
+      font-size: 15px;
+    }
+    
+    &__image img {
+      max-width: 189px;
+      height: auto;
+    }
+    
+    &__description {
+      font-size: 10px;
+      max-width: 255px;
+      margin: 0 auto;
+    }
+  }
+  
+  // Video section for mobile
+  .video-section {
+    &__title {
+      font-size: 16px;
+    }
+  }
+  
+  // Skills section for mobile
+  .skills {
+    &__title {
+      font-size: 13px;
+    }
+    
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+    
+    &__category {
+      max-width: 299px;
+      margin: 0 auto;
+      
+      h3 {
+        font-size: 15px;
+      }
+      
+      p {
+        font-size: 10px;
+      }
+    }
+    
+    &__icons {
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  
+  // Testimonials for mobile
+  .testimonials {
+    &__title {
+      font-size: 13px;
+    }
+    
+    &__item {
+      max-width: 246px;
+      padding: $spacing-md;
+      
+      p {
+        font-size: 11px;
+      }
+    }
+  }
+  
+  // Projects for mobile
+  .projects__grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+  
+  .project-card {
+    max-width: 317px;
+    margin: 0 auto;
+    
+    &__image {
+      height: 140px;
+    }
+    
+    &__number {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+    }
+    
+    &__title {
+      font-size: 14px;
+    }
+  }
+  
+  // About page for mobile
+  .about {
+    &__title {
+      font-size: 24px;
+    }
+    
+    &__subtitle {
+      font-size: 16px;
+    }
+    
+    &__bio {
+      font-size: 12px;
+    }
+  }
+  
+  // Contact page for mobile
+  .contact__form {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+    
+    input,
+    textarea {
+      font-size: 13px;
+    }
+  }
+  
+  // Footer for mobile
+  .footer {
+    padding: $spacing-md $mobile-container-padding;
+    
+    &__nav {
+      flex-direction: column;
+      gap: $spacing-xs;
+      
+      a {
+        font-size: 11px;
+      }
+    }
+    
+    &__logo h2 {
+      font-size: 28px;
+    }
+  }
+  
+  // Container adjustments
+  .container {
+    padding-left: $mobile-container-padding;
+    padding-right: $mobile-container-padding;
+  }
+  
+  // Section adjustments
+  .section {
+    padding: $spacing-lg 0;
+  }
+  
+  // Grid adjustments
+  .grid,
+  .grid-2,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: $spacing-md;
+  }
+}
