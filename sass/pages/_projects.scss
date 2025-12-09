@@ -1,38 +1,88 @@
-// ================================
-// PROJECTS PAGE STYLES
-// ================================
-
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+// Projects Header
+.projects-header {
+  padding: $spacing-xl 0;
+  background-color: $bg-section;
+  text-align: center;
+}
 
-#all-projects {
-    background-color: $bg-light;
-    
-    .project-card {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        
-        img {
-            flex-shrink: 0;
-        }
-        
-        h3 {
-            flex-shrink: 0;
-        }
-        
-        p {
-            flex-grow: 1;
-        }
-        
-        .project-tech {
-            flex-shrink: 0;
-            padding-bottom: $spacing-sm;
-        }
-        
-        .btn {
-            flex-shrink: 0;
-        }
-    }
+.projects__title {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  margin-bottom: $spacing-lg;
+  @include heading-1;
+}
+
+// Filter Buttons
+.projects__filters {
+  display: flex;
+  gap: $spacing-sm;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: $spacing-lg;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  font-family: $font-primary;
+  font-size: $font-size-small;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: transparent;
+  color: $text-dark;
+  border: 2px solid $primary-color;
+  border-radius: $radius-large;
+  cursor: pointer;
+  @include transition(all);
+  
+  &:hover {
+    background-color: $primary-color;
+    color: $text-light;
+  }
+  
+  &.active {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: $text-light;
+  }
+}
+
+// Projects Section
+.projects-section {
+  padding: $spacing-xxl 0;
+}
+
+.projects__grid {
+  @include grid(3, $spacing-lg);
+  
+  @media (max-width: #{ $breakpoint-desktop - 1px }) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: #{ $breakpoint-tablet - 1px }) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Project Card (extended from components)
+.project-card {
+  opacity: 1;
+  transform: scale(1);
+  @include transition(all, 0.3s);
+  
+  &.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  &__description {
+    min-height: 60px;
+  }
 }

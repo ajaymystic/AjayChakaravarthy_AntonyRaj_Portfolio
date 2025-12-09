@@ -1,45 +1,155 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-footer {
-    background-color: $primary-color;
-    color: $text-light;
-    padding: $spacing-xl 0 $spacing-md;
+.footer {
+  width: 100%;
+  background-color: $primary-color; // #2B2D42 - Deep Charcoal
+  padding: $spacing-xl 0 $spacing-md 0;
+  margin-top: auto;
+  border-top: 1px solid rgba($text-light, 0.1);
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-lg;
+  }
+  
+  // Logo (Image Support)
+  &__logo {
+    margin-bottom: $spacing-xs;
     
-    h3, h4 {
-        color: $text-light;
-        margin-bottom: $spacing-md;
+    a {
+      display: block;
+      @include transition(all);
+      
+      &:hover {
+        opacity: 0.8;
+        transform: translateY(-2px);
+      }
     }
+    
+    img {
+      height: 150px;
+      width: auto;
+      display: block;
+      
+      @include mobile {
+        height: 80px;
+      }
+    }
+  }
+  
+  // Navigation
+  &__nav {
+    ul {
+      display: flex;
+      gap: $spacing-lg;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      @include mobile {
+        gap: $spacing-md;
+      }
+    }
+    
+    a {
+      font-family: $font-primary;
+      font-size: $font-size-sm;
+      font-weight: 600;
+      color: $text-light;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding-bottom: 4px;
+      position: relative;
+      @include transition(color);
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $secondary-color;
+        @include transition(width);
+      }
+      
+      &:hover {
+        color: $secondary-color;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+      
+      // Active state underline
+      &.active {
+        color: $secondary-color;
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  // Social Media Icons
+  &__social {
+    display: flex;
+    gap: $spacing-md;
+    
+    a {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($text-light, 0.1);
+      border-radius: $radius-small;
+      color: $text-light;
+      font-size: 18px;
+      @include transition(all);
+      
+      &:hover {
+        background-color: $secondary-color;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba($secondary-color, 0.3);
+      }
+      
+      @include mobile {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+      
+      svg,
+      i {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  
+  // Copyright
+  &__copyright {
+    font-size: $font-size-xs;
+    color: rgba($text-light, 0.6);
+    text-align: center;
+    margin: 0;
+    padding-top: $spacing-md;
+    border-top: 1px solid rgba($text-light, 0.1);
+    width: 100%;
     
     p {
-        color: $text-light;
-        opacity: 0.8;
+      margin: 0;
     }
-    
-    ul {
-        li {
-            margin-bottom: $spacing-xs;
-        }
-        
-        a {
-            color: $text-light;
-            opacity: 0.8;
-            @include transition(opacity);
-            
-            &:hover {
-                opacity: 1;
-            }
-        }
-    }
-    
-    .col-span-4:last-child {
-        text-align: center;
-        margin-top: $spacing-lg;
-        padding-top: $spacing-md;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        
-        @include tablet {
-            grid-column: span 12;
-        }
-    }
+  }
 }
