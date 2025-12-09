@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Ajay Chakaravarthy Antony Raj - Full Stack Developer">
+    <title>Contact | Ajay Chakaravarthy Antony Raj</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <nav class="grid-con">
+            <div class="col-span-4 m-col-span-12 nav-container">
+                <div class="logo">
+                    <a href="index.html"><h2>ACAR</h2></a>
+                </div>
+                
+                <ul class="desktop-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+        
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section id="hero">
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-12 text-center">
+                <h1>Get In Touch</h1>
+                <p>Have a project in mind? Let's work together to bring your ideas to life</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-section">
+        <div class="grid-con">
+            
+            <!-- Contact Information -->
+            <div class="col-span-4 m-col-span-5 l-col-span-5">
+                <h2>Contact Information</h2>
+                <p>Feel free to reach out through the contact form or connect with me on social media.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p>your.email@example.com</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>Location</h4>
+                        <p>London, Ontario, Canada</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>Social Media</h4>
+                        <p>
+                            <a href="https://www.linkedin.com/in/ajay-chakaravarthy/" target="_blank">LinkedIn</a> | 
+                            <a href="https://github.com/ajaymystic" target="_blank">GitHub</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="col-span-4 m-col-span-7 l-col-span-7">
+                <form id="contact-form" class="contact-form" method="POST" action="submit_form.php">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                    
+                </form>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="grid-con">
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <h3>Ajay Chakaravarthy</h3>
+                <p>Full Stack Developer</p>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-span-4 m-col-span-4 l-col-span-4">
+                <h4>Connect</h4>
+                <p>LinkedIn | GitHub | Email</p>
+            </div>
+            <div class="col-span-4 m-col-span-12">
+                <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    
+</body>
+</html>
