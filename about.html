@@ -1,179 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About Ajay Chakaravarthy Antony Raj - Full Stack Developer">
-    <title>About | Ajay Chakaravarthy Antony Raj</title>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Ajay Chakaravarthy Antony Raj - Digital Media Designer">
+  <title>About - Ajay Antony Raj</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 <body>
+  
+  <!-- Header -->
+  <header class="header">
+  <div class="grid-con">
+    <nav class="header__nav col-span-4 m-col-span-12 l-col-span-12">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+      
+      <!-- Desktop Navigation (Show on Desktop Only) -->
+      <div class="nav__menu">
+        <a href="index.html" class="nav__link ">HOME</a>
+        <a href="about.html" class="nav__link active">ABOUT</a>
+        <a href="projects.html" class="nav__link">WORK</a>
+        <a href="contact.php" class="nav__link">CONTACT</a>
+      </div>
+      
+      <!-- Social Icons (Desktop Only) -->
+      <div class="nav__social-icons">
+        <a href="mailto:your.email@example.com" class="nav__social-link" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" class="nav__social-link" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/yourprofile" class="nav__social-link" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
+      <!-- Hamburger Menu (Mobile/Tablet) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <!-- Close Button -->
+  <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="mobile-menu__content">
+    <nav class="mobile-menu__list">
+      <a href="index.html" class="mobile-menu__link active">HOME</a>
+      <a href="about.html" class="mobile-menu__link">ABOUT</a>
+      <a href="projects.html" class="mobile-menu__link">WORK</a>
+      <a href="contact.html" class="mobile-menu__link">CONTACT</a>
+    </nav>
     
-    <!-- Header / Navigation -->
-    <header id="main-header">
-        <nav class="grid-con">
-            <div class="col-span-4 m-col-span-12 nav-container">
-                <div class="logo">
-                    <a href="index.html"><h2>LOGO</h2></a>
-                </div>
-                
-                <ul class="desktop-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                
-                <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
+    <div class="mobile-menu__social">
+      <a href="mailto:your.email@example.com" class="mobile-menu__social-link" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" class="mobile-menu__social-link" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/yourprofile" class="mobile-menu__social-link" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+</div>
+  <!-- Main Content -->
+  <main>
+    
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <h1 class="about__title">About Me</h1>
         
-        <div class="mobile-menu" id="mobile-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+        <div class="about__hero-image">
+          <img src="images/aboutme.jpg" alt="Ajay Antony Raj">
         </div>
-    </header>
-
-    <!-- About Hero Section -->
-    <section id="hero">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12 text-center">
-                <h1>About Me</h1>
-                <p>Get to know more about my journey, skills, and passion for web development</p>
-            </div>
-        </div>
+        
+        <h2 class="about__subtitle">Yep, that's me AGAIN</h2>
+      </div>
     </section>
-
-    <!-- Bio Section -->
-    <section id="bio">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <img src="images/about-photo.jpg" alt="Ajay Chakaravarthy">
-            </div>
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <h2>Hi, I'm Ajay Chakaravarthy Antony Raj</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <a href="#" class="btn">Download Resume</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>Technical Skills</h2>
-            </div>
-            
-            <!-- Frontend Skills -->
-            <div class="col-span-4 m-col-span-6 l-col-span-4">
-                <div class="card">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>HTML5</li>
-                        <li>CSS3 / SASS</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Backend Skills -->
-            <div class="col-span-4 m-col-span-6 l-col-span-4">
-                <div class="card">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>PHP</li>
-                        <li>MySQL</li>
-                        <li>RESTful APIs</li>
-                        <li>Database Design</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Tools & Others -->
-            <div class="col-span-4 m-col-span-6 l-col-span-4">
-                <div class="card">
-                    <h3>Tools & Others</h3>
-                    <ul>
-                        <li>Git / GitHub</li>
-                        <li>VS Code</li>
-                        <li>Figma</li>
-                        <li>Web Performance</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education/Experience Section -->
-    <section id="experience">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>Education & Experience</h2>
-            </div>
-            
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <div class="card">
-                    <h3>Education</h3>
-                    <h4>Interactive Media Design</h4>
-                    <p>Fanshawe College</p>
-                    <p>2023 - 2025</p>
-                </div>
-            </div>
-            
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <div class="card">
-                    <h3>Experience</h3>
-                    <h4>Your Role</h4>
-                    <p>Company Name</p>
-                    <p>2024 - Present</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <h3>Ajay Chakaravarthy</h3>
-                <p>Full Stack Developer</p>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <h4>Connect</h4>
-                <p>LinkedIn | GitHub | Email</p>
-            </div>
-            <div class="col-span-4 m-col-span-12">
-                <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
     
+    <!-- Bio Section -->
+    <section class="about-bio">
+      <div class="container">
+        <div class="about__bio">
+          <p>I'm a developer who likes to move fast and build things that feel alive. I jump into projects with the goal of making them smoother, sharper, and way more intuitive than they started. I love that moment when an idea turns into something you can click, touch, test, and break — then rebuild into something even better.</p>
+          
+          <p>I work with a mix of logic and instinct, pushing for clean structure but keeping enough flexibility to try ideas that don't exist yet. I'm always chasing that flow where the code lines up, the interface reacts instantly, and everything just clicks into place. Whether it's refining interactions, tightening performance, or turning a messy concept into a polished experience, I'm all about momentum and making the final result feel fast, responsive, and fun to use.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="about-stats">
+      <div class="container">
+        <div class="about__stats">
+          
+          <div class="about__stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Experience</h3>
+            <p>3+ Years</p>
+          </div>
+          
+          <div class="about__stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Completed</h3>
+            <p>7+ Projects</p>
+          </div>
+          
+          <div class="about__stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-comment-dots"></i>
+            </div>
+            <h3>Contact Me</h3>
+            <p>Anytime</p>
+          </div>
+          
+        </div>
+        
+        <div class="text-center">
+          <a href="files/resume.pdf" class="btn btn--primary btn-download" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Experience Timeline -->
+    <!-- <section class="timeline">
+      <div class="container">
+        <h2 class="section-title">Experience & Education</h2>
+        
+        <div class="timeline__container">
+          
+          <div class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3>Fanshawe College</h3>
+              <p class="timeline__date">2023 - Present</p>
+              <p>Interactive Media Design - Advanced Diploma</p>
+            </div>
+          </div>
+          
+          <div class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3>Freelance Designer</h3>
+              <p class="timeline__date">2022 - Present</p>
+              <p>Web design, branding, and digital media projects for various clients</p>
+            </div>
+          </div>
+          
+          <div class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <h3>Previous Experience</h3>
+              <p class="timeline__date">2020 - 2022</p>
+              <p>Graphic design and motion graphics work</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section> -->
+    
+  </main>
+  
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Logo -->
+    <div class="footer__logo">
+      <a href="index.html">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="footer__nav">
+      <ul>
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Work</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Social Links -->
+    <div class="footer__social">
+      <a href="mailto:your.email@example.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/yourprofile" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="footer__copyright">
+      <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  
 </body>
 </html>

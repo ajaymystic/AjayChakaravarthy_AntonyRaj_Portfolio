@@ -1,209 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ajay Chakaravarthy Antony Raj - Full Stack Developer Portfolio">
-    <meta name="author" content="Ajay Chakaravarthy Antony Raj">
-    <title>Ajay Chakaravarthy Antony Raj | Full Stack Developer</title>
-    
-    <!-- Plyr CSS for Video Player -->
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ajay Chakaravarthy Antony Raj - Digital Media Designer Portfolio">
+  <title>Ajay Antony Raj - Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/grid.css">
+  
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 <body>
+  
+  <!-- Header -->
+  <header class="header">
+  <div class="grid-con">
+    <nav class="header__nav col-span-4 m-col-span-12 l-col-span-12">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+      
+      <!-- Desktop Navigation (Show on Desktop Only) -->
+      <div class="nav__menu">
+        <a href="index.html" class="nav__link active">HOME</a>
+        <a href="about.html" class="nav__link">ABOUT</a>
+        <a href="projects.html" class="nav__link">WORK</a>
+        <a href="contact.php" class="nav__link">CONTACT</a>
+      </div>
+      
+      <!-- Social Icons (Desktop Only) -->
+      <div class="nav__social-icons">
+        <a href="mailto:your.email@example.com" class="nav__social-link" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/ajaychakaravarthyantonyraj" class="nav__social-link" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ajaychakaravarthyantonyraj" class="nav__social-link" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
+      <!-- Hamburger Menu (Mobile/Tablet) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <!-- Close Button -->
+  <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="mobile-menu__content">
+    <nav class="mobile-menu__list">
+      <a href="index.html" class="mobile-menu__link active">HOME</a>
+      <a href="about.html" class="mobile-menu__link">ABOUT</a>
+      <a href="projects.html" class="mobile-menu__link">WORK</a>
+      <a href="contact.html" class="mobile-menu__link">CONTACT</a>
+    </nav>
     
-    <!-- Header / Navigation -->
-    <header id="main-header">
-        <nav class="grid-con">
-            <div class="col-span-4 m-col-span-12 nav-container">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html">
-                        <h2>ACAR</h2>
-                    </a>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <ul class="desktop-nav">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                
-                <!-- Hamburger Menu Button -->
-                <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <h1>Hi, I'm Ajay Chakaravarthy</h1>
-                <h2>Full Stack Developer</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <a href="projects.html" class="btn">View My Work</a>
-                <a href="contact.html" class="btn btn-outline">Contact Me</a>
-            </div>
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <img src="images/hero-placeholder.jpg" alt="Hero Image">
-            </div>
-        </div>
-    </section>
-
-    <!-- About Preview Section -->
-    <section id="about-preview">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>About Me</h2>
-                <p>A brief introduction about yourself goes here</p>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <div class="card">
-                    <h3>Clean Code</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <div class="card">
-                    <h3>Creative Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <div class="card">
-                    <h3>Performance</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects Section -->
-    <section id="featured-projects">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>Featured Projects</h2>
-                <p>Showcasing my recent work</p>
-            </div>
-            
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <div class="project-card">
-                    <img src="images/project-placeholder-1.jpg" alt="Project 1">
-                    <h3>Project Title 1</h3>
-                    <p>Project description goes here. Lorem ipsum dolor sit amet.</p>
-                    <a href="projects.html" class="btn">View Project</a>
-                </div>
-            </div>
-            
-            <div class="col-span-4 m-col-span-6 l-col-span-6">
-                <div class="project-card">
-                    <img src="images/project-placeholder-2.jpg" alt="Project 2">
-                    <h3>Project Title 2</h3>
-                    <p>Project description goes here. Lorem ipsum dolor sit amet.</p>
-                    <a href="projects.html" class="btn">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <div class="mobile-menu__social">
+      <a href="mailto:your.email@example.com" class="mobile-menu__social-link" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" class="mobile-menu__social-link" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/yourprofile" class="mobile-menu__social-link" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+</div>
+  
+  <!-- Main Content -->
+  <main>
+    
+   <!-- Hero Section -->
+<section class="hero">
+  <div class="grid-con">
+    
+    <!-- Content (Left) -->
+    <div class="hero__content col-span-2 m-col-span-6 l-col-span-6">
+      <h1 class="hero__title">Welcome</h1>
+      <p class="hero__subtitle">Yep, that's me in that picture</p>
+      
+      <div class="hero__description">
+        <p>I'm a digital media designer who builds interfaces, visuals, and layouts with purpose and clarity. Every project starts with understanding the problem and ends with something people can actually use.</p>
+      </div>
+      
+      <a href="contact.php" class="btn btn--primary">CONTACT ME</a>
+    </div>
+    
+    <!-- Image (Right) -->
+    <div class="hero__image-container col-span-2 m-col-span-6 l-col-span-6">
+      <div class="hero__image">
+        <img src="images/me.jpg" alt="Ajay Chakaravarthy Antony Raj ">
+      </div>
+    </div>
+    
+  </div>
+</section>
     <!-- Video Section -->
-    <section id="video-section">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>Video Showcase</h2>
-            </div>
-            <div class="col-span-4 m-col-span-10 m-col-start-2 l-col-span-8 l-col-start-3">
-                <video id="player" playsinline controls>
-                    <source src="videos/demo.mp4" type="video/mp4" />
-                </video>
-            </div>
+    <section class="video-section">
+      <div class="container">
+        <h2 class="video-section__title">Demo Reel / Video Player</h2>
+        
+        <div class="video-showcase">
+          <video id="player" playsinline controls>
+            <source src="video/Demo_reel.mp4" type="video/mp4">
+            Your browser doesn't support HTML5 video.
+          </video>
         </div>
+      </div>
     </section>
-
+    
     <!-- Skills Section -->
-    <section id="skills">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>Technical Skills</h2>
+    <section class="skills">
+      <div class="container">
+        <h2 class="skills__title">My Skills</h2>
+        
+        <div class="skills__grid">
+          
+          <!-- Front-End Development -->
+          <div class="skills__category">
+            <h3>Front-End Development</h3>
+            <p>Crafting responsive, and interactive user interfaces</p>
+            <div class="skills__icons">
+              <img src="images/skills/html.svg" alt="HTML5">
+              <img src="images/skills/css.svg" alt="CSS3">
+              <img src="images/skills/js.svg" alt="JavaScript">
+              <img src="images/skills/sass.svg" alt="SASS">
+              <img src="images/skills/tw.svg" alt="Tailwind CSS">
+              <img src="images/skills/figma.svg" alt="Figma">
             </div>
-            <div class="col-span-4 m-col-span-12">
-                <div class="skills-grid">
-                    <div class="skill">HTML5</div>
-                    <div class="skill">CSS3</div>
-                    <div class="skill">JavaScript</div>
-                    <div class="skill">PHP</div>
-                    <div class="skill">MySQL</div>
-                    <div class="skill">SASS</div>
-                    <div class="skill">Git</div>
-                    <div class="skill">Responsive Design</div>
-                </div>
+          </div>
+          
+          <!-- Backend Development -->
+          <div class="skills__category">
+            <h3>Backend Development</h3>
+            <p>Powering seamless functionality behind every click</p>
+            <div class="skills__icons">
+              <img src="images/skills/php.svg" alt="PHP">
+              <img src="images/skills/mysql.svg" alt="MySQL">
+              <img src="images/skills/c.svg" alt="C#">
             </div>
+          </div>
+          
+          <!-- Digital Art -->
+          <div class="skills__category">
+            <h3>Digital Art</h3>
+            <p>Turning imagination into vivid visual expression</p>
+            <div class="skills__icons">
+              <img src="images/skills/ph.svg" alt="Photoshop">
+              <img src="images/skills/ai.svg" alt="Illustrator">
+              <img src="images/skills/ac.svg" alt="Creative Cloud">
+            </div>
+          </div>
+          
+          <!-- Motion Design -->
+          <div class="skills__category">
+            <h3>Motion Design</h3>
+            <p>Animating ideas with rhythm, flow, and story</p>
+            <div class="skills__icons">
+              <img src="images/skills/cinema4d.svg" alt="Cinema4D">
+              <img src="images/skills/ae.svg" alt="After Effects">
+              <img src="images/skills/pp.svg" alt="Premiere Pro">
+            </div>
+          </div>
+          
         </div>
+      </div>
     </section>
-
-    <!-- Contact CTA -->
-    <section id="cta">
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-12">
-                <h2>Let's Work Together</h2>
-                <p>I'm always open to discussing new projects and opportunities.</p>
-                <a href="contact.html" class="btn">Get In Touch</a>
+    
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        
+        <div class="projects-grid">
+          
+          <a href="projects.html" class="project-card">
+            <div class="project-card__image">
+              <img src="images/projects/industrynight.jpg" alt="Industry Night 2025">
             </div>
+            <div class="project-card__content">
+              <div class="project-card__number">1</div>
+              <h3 class="project-card__title">Industry Night 2025</h3>
+              <div class="project-card__tags">
+                <span class="tag">Web Design</span>
+                <span class="tag">UI/UX</span>
+              </div>
+            </div>
+          </a>
+          
+          <a href="projects.html" class="project-card">
+            <div class="project-card__image">
+              <img src="images/projects/luxbuds.jpg" alt="LuxAudio Buds">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">2</div>
+              <h3 class="project-card__title">Full Fledged Website - LuxAudio Buds</h3>
+              <div class="project-card__tags">
+                <span class="tag">E-Commerce</span>
+                <span class="tag">Responsive</span>
+              </div>
+            </div>
+          </a>
+          
+          <a href="projects.html" class="project-card">
+            <div class="project-card__image">
+              <img src="images/projects/brandrefresh-7.jpg" alt="Brand Refresh">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">3</div>
+              <h3 class="project-card__title">Brand Refresh - Seven</h3>
+              <div class="project-card__tags">
+                <span class="tag">Branding</span>
+                <span class="tag">Graphics</span>
+              </div>
+            </div>
+          </a>
+          
         </div>
+        
+        <div class="text-center">
+          <a href="projects.html" class="btn btn--outline">View All Projects</a>
+        </div>
+      </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="grid-con">
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <h3>Ajay Chakaravarthy</h3>
-                <p>Full Stack Developer</p>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-span-4 m-col-span-4 l-col-span-4">
-                <h4>Connect</h4>
-                <p>LinkedIn | GitHub | Email</p>
-            </div>
-            <div class="col-span-4 m-col-span-12">
-                <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Plyr JS -->
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     
-    <!-- Custom JavaScript -->
-    <script src="js/main.js"></script>
+    <!-- Testimonials -->
+    <section class="testimonials">
+  <div class="grid-con">
+    <div class="col-span-4 m-col-span-12 l-col-span-12">
+      <h2 class="testimonials__title">Testimonials</h2>
+      
+      <!-- Testimonials Slider -->
+      <div class="testimonials__slider">
+        <!-- Testimonials will be dynamically inserted here -->
+      </div>
+      
+      <!-- Dots Navigation -->
+      <div class="testimonials__dots">
+        <!-- Dots will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+</section>
     
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to start a project?</h2>
+        <p>Let's turn ideas into awesome things. Your move.</p>
+        <a href="contact.html" class="btn btn--primary btn--large">Get In Touch</a>
+      </div>
+    </section>
+    
+  </main>
+  
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Logo -->
+    <div class="footer__logo">
+      <a href="index.html">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="footer__nav">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Work</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Social Links -->
+    <div class="footer__social">
+      <a href="mailto:your.email@example.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/yourprofile" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="footer__copyright">
+      <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+  
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- Plyr -->
+  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+  
+  <!-- Main JavaScript -->
+  <script src="js/main.js"></script>
+  
 </body>
 </html>
