@@ -7,44 +7,47 @@ const NavigationModule = (function() {
   const mobileLinks = document.querySelectorAll('.mobile-menu__link');
   
   function initNavigation() {
-    // I'm checking if elements exist
     if (!hamburger || !mobileMenu) return;
     
-    // I'm adding click event to hamburger
     hamburger.addEventListener('click', toggleMobileMenu);
     
-    // I'm adding click event to close button
     if (closeMenuBtn) {
       closeMenuBtn.addEventListener('click', closeMobileMenu);
     }
     
-    // I'm adding click events to mobile links
-    mobileLinks.forEach(function(link) {
-      link.addEventListener('click', closeMobileMenu);
-    });
+    // Close menu when clicking any navigation link
+    mobileLinks.forEach(addCloseLinkHandler);
     
-    // I'm adding click event to close when clicking outside menu
-    mobileMenu.addEventListener('click', function(e) {
-      if (e.target === mobileMenu) {
-        closeMobileMenu();
-      }
-    });
-    
-    // I'm adding scroll event for header shadow
+    mobileMenu.addEventListener('click', handleOutsideClick);
     window.addEventListener('scroll', handleScroll);
-    
-    // I'm adding escape key to close menu
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-        closeMobileMenu();
-      }
-    });
+    document.addEventListener('keydown', handleEscapeKey);
+  }
+  
+  function addCloseLinkHandler(link) {
+    link.addEventListener('click', closeMobileMenu);
+  }
+  
+  function handleOutsideClick(e) {
+    if (e.target === mobileMenu) {
+      closeMobileMenu();
+    }
+  }
+  
+  function handleEscapeKey(e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+      closeMobileMenu();
+    }
   }
   
   function toggleMobileMenu() {
     hamburger.classList.toggle('active');
     mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    
+    if (mobileMenu.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }
   
   function closeMobileMenu() {
@@ -76,16 +79,14 @@ const VideoPlayerModule = (function() {
   function initVideoPlayer() {
     const player = document.querySelector('#player');
     
-    // I'm checking if player exists
     if (!player) return;
     
-    // I'm checking if Plyr is available
     if (typeof Plyr === 'undefined') {
       console.warn('Plyr is not loaded');
       return;
     }
     
-    // I'm initializing Plyr
+    // Custom controls for demo reel playback
     plyrInstance = new Plyr(player, {
       controls: [
         'play-large',
@@ -106,18 +107,21 @@ const VideoPlayerModule = (function() {
       }
     });
     
-    // I'm adding event listeners
-    plyrInstance.on('play', function() {
-      console.log('Video is playing');
-    });
-    
-    plyrInstance.on('pause', function() {
-      console.log('Video is paused');
-    });
-    
-    plyrInstance.on('ended', function() {
-      console.log('Video ended');
-    });
+    plyrInstance.on('play', handleVideoPlay);
+    plyrInstance.on('pause', handleVideoPause);
+    plyrInstance.on('ended', handleVideoEnd);
+  }
+  
+  function handleVideoPlay() {
+    console.log('Video is playing');
+  }
+  
+  function handleVideoPause() {
+    console.log('Video is paused');
+  }
+  
+  function handleVideoEnd() {
+    console.log('Video ended');
   }
   
   return {
@@ -129,34 +133,19 @@ const VideoPlayerModule = (function() {
 // Animations Module
 const AnimationsModule = (function() {
   function initAnimations() {
-    // I'm checking if GSAP is available
     if (typeof gsap === 'undefined') {
       console.warn('GSAP is not loaded, skipping animations');
       return;
     }
     
-    // I'm registering ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
     
-    // Hero animations
     animateHero();
-    
-    // Cards animations
     animateCards();
-    
-    // Skills animations
     animateSkills();
-    
-    // Projects animations
     animateProjects();
-    
-    // Video section animations
     animateVideoSection();
-    
-    // CTA section animations
     animateCTA();
-    
-    // Testimonials animations
     animateTestimonials();
   }
   
@@ -166,11 +155,10 @@ const AnimationsModule = (function() {
     
     if (!heroContent) return;
     
-    // I'm ensuring elements are visible initially
+    // Set initial visibility before animation
     gsap.set(heroContent, { opacity: 1, visibility: 'visible' });
     if (heroImage) gsap.set(heroImage, { opacity: 1, visibility: 'visible' });
     
-    // I'm animating hero content elements
     const contentElements = heroContent.querySelectorAll('.hero__title, .hero__subtitle, .hero__description, .btn');
     
     if (contentElements.length > 0) {
@@ -184,7 +172,6 @@ const AnimationsModule = (function() {
       });
     }
     
-    // I'm animating hero image
     if (heroImage) {
       gsap.from(heroImage, {
         opacity: 0,
@@ -202,22 +189,23 @@ const AnimationsModule = (function() {
     
     if (cards.length === 0) return;
     
-    // I'm ensuring cards are visible initially
     gsap.set(cards, { opacity: 1, visibility: 'visible' });
     
-    cards.forEach(function(card) {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.6,
-        ease: 'power2.out',
-        clearProps: 'all'
-      });
+    cards.forEach(animateSingleCard);
+  }
+  
+  function animateSingleCard(card) {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      opacity: 0,
+      y: 50,
+      duration: 0.6,
+      ease: 'power2.out',
+      clearProps: 'all'
     });
   }
   
@@ -226,23 +214,24 @@ const AnimationsModule = (function() {
     
     if (skillCategories.length === 0) return;
     
-    // I'm ensuring skills are visible initially
     gsap.set(skillCategories, { opacity: 1, visibility: 'visible' });
     
-    skillCategories.forEach(function(category, index) {
-      gsap.from(category, {
-        scrollTrigger: {
-          trigger: category,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        },
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: 'back.out(1.7)',
-        clearProps: 'all'
-      });
+    skillCategories.forEach(animateSingleSkill);
+  }
+  
+  function animateSingleSkill(category, index) {
+    gsap.from(category, {
+      scrollTrigger: {
+        trigger: category,
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.5,
+      delay: index * 0.1,
+      ease: 'back.out(1.7)',
+      clearProps: 'all'
     });
   }
   
@@ -251,7 +240,6 @@ const AnimationsModule = (function() {
     
     if (projectCards.length === 0) return;
     
-    // I'm ensuring project cards are visible initially
     gsap.set(projectCards, { opacity: 1, visibility: 'visible' });
     
     gsap.from(projectCards, {
@@ -362,16 +350,16 @@ const AnimationsModule = (function() {
 const SmoothScrollModule = (function() {
   function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(function(link) {
-      link.addEventListener('click', handleSmoothScroll);
-    });
+    links.forEach(addSmoothScrollHandler);
+  }
+  
+  function addSmoothScrollHandler(link) {
+    link.addEventListener('click', handleSmoothScroll);
   }
   
   function handleSmoothScroll(e) {
     const href = this.getAttribute('href');
     
-    // I'm checking if href is just "#"
     if (href === '#' || !href) {
       e.preventDefault();
       return;
@@ -383,7 +371,6 @@ const SmoothScrollModule = (function() {
     
     e.preventDefault();
     
-    // I'm closing mobile menu if open
     NavigationModule.close();
     
     const header = document.querySelector('.header');
@@ -410,24 +397,27 @@ const FormValidationModule = (function() {
     
     form.addEventListener('submit', handleFormSubmit);
     
-    // I'm adding real-time validation
     const inputs = form.querySelectorAll('input, textarea');
-    inputs.forEach(function(input) {
-      input.addEventListener('blur', function() {
-        validateField(input);
-      });
-      
-      // I'm clearing errors on input
-      input.addEventListener('input', function() {
-        if (input.classList.contains('error')) {
-          input.classList.remove('error');
-          const errorElement = input.parentElement.querySelector('.form-error');
-          if (errorElement) {
-            errorElement.textContent = '';
-          }
-        }
-      });
-    });
+    inputs.forEach(addInputValidation);
+  }
+  
+  function addInputValidation(input) {
+    input.addEventListener('blur', handleFieldBlur);
+    input.addEventListener('input', handleFieldInput);
+  }
+  
+  function handleFieldBlur() {
+    validateField(this);
+  }
+  
+  function handleFieldInput() {
+    if (this.classList.contains('error')) {
+      this.classList.remove('error');
+      const errorElement = this.parentElement.querySelector('.form-error');
+      if (errorElement) {
+        errorElement.textContent = '';
+      }
+    }
   }
   
   function handleFormSubmit(e) {
@@ -438,29 +428,32 @@ const FormValidationModule = (function() {
     const inputs = form.querySelectorAll('input[required], textarea[required]');
     let isValid = true;
     
-    // I'm validating all required fields
-    inputs.forEach(function(input) {
+    inputs.forEach(checkFieldValidity);
+    
+    function checkFieldValidity(input) {
       if (!validateField(input)) {
         isValid = false;
       }
-    });
+    }
     
     if (isValid) {
-      // I'm adding loading state
       if (submitBtn) {
         submitBtn.classList.add('btn--loading');
         submitBtn.disabled = true;
       }
       
-      // I'm simulating form submission (replace with actual submission)
-      setTimeout(function() {
+      // Form submits to PHP handler automatically
+      // This timeout is for demonstration only
+      setTimeout(completeSubmission, 1500);
+      
+      function completeSubmission() {
         if (submitBtn) {
           submitBtn.classList.remove('btn--loading');
           submitBtn.disabled = false;
         }
         showMessage('success', 'Message sent successfully! I\'ll get back to you soon.');
         form.reset();
-      }, 1500);
+      }
     } else {
       showMessage('error', 'Please fill in all required fields correctly.');
     }
@@ -470,19 +463,16 @@ const FormValidationModule = (function() {
     const value = field.value.trim();
     const errorElement = field.parentElement.querySelector('.form-error');
     
-    // I'm clearing previous error
     field.classList.remove('error', 'success');
     if (errorElement) {
       errorElement.textContent = '';
     }
     
-    // I'm checking if field is empty
     if (field.hasAttribute('required') && value === '') {
       showFieldError(field, 'This field is required');
       return false;
     }
     
-    // I'm validating email
     if (field.type === 'email' && value !== '') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(value)) {
@@ -491,7 +481,6 @@ const FormValidationModule = (function() {
       }
     }
     
-    // I'm validating min length
     if (field.hasAttribute('minlength')) {
       const minLength = parseInt(field.getAttribute('minlength'));
       if (value.length < minLength) {
@@ -500,7 +489,6 @@ const FormValidationModule = (function() {
       }
     }
     
-    // I'm marking field as valid
     field.classList.add('success');
     return true;
   }
@@ -515,8 +503,8 @@ const FormValidationModule = (function() {
   
   function showMessage(type, message) {
     const messageElement = document.querySelector('.form-message');
+    
     if (!messageElement) {
-      // I'm creating message element if it doesn't exist
       const newMessage = document.createElement('div');
       newMessage.className = 'form-message ' + type;
       newMessage.textContent = message;
@@ -530,11 +518,12 @@ const FormValidationModule = (function() {
     messageElement.className = 'form-message ' + type;
     messageElement.textContent = message;
     
-    // I'm hiding message after 5 seconds
-    setTimeout(function() {
+    setTimeout(clearMessage, 5000);
+    
+    function clearMessage() {
       messageElement.className = 'form-message';
       messageElement.textContent = '';
-    }, 5000);
+    }
   }
   
   return {
@@ -550,66 +539,74 @@ const ProjectFilterModule = (function() {
     
     if (filterButtons.length === 0) return;
     
-    filterButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
+    filterButtons.forEach(addFilterHandler);
+    
+    function addFilterHandler(button) {
+      button.addEventListener('click', handleFilterClick);
+      
+      function handleFilterClick() {
         handleFilter(button, projectCards, filterButtons);
-      });
-    });
+      }
+    }
   }
   
   function handleFilter(button, cards, buttons) {
     const filter = button.getAttribute('data-filter');
     
-    // I'm updating active button
-    buttons.forEach(function(btn) {
-      btn.classList.remove('active');
-    });
+    buttons.forEach(removeActiveClass);
     button.classList.add('active');
     
-    // I'm checking if GSAP is available
+    function removeActiveClass(btn) {
+      btn.classList.remove('active');
+    }
+    
     if (typeof gsap === 'undefined') {
-      // I'm using simple show/hide without animation
-      cards.forEach(function(card) {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+      cards.forEach(simpleFilterCard);
       return;
     }
     
-    // I'm filtering cards with GSAP animation
-    cards.forEach(function(card, index) {
+    cards.forEach(animatedFilterCard);
+    
+    function simpleFilterCard(card) {
+      const category = card.getAttribute('data-category');
+      if (filter === 'all' || category === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+    
+    function animatedFilterCard(card, index) {
       const category = card.getAttribute('data-category');
       
       if (filter === 'all' || category === filter) {
-        // I'm showing card
         gsap.to(card, {
           opacity: 1,
           scale: 1,
           duration: 0.3,
           delay: index * 0.05,
-          onStart: function() {
-            card.classList.remove('hidden');
-            card.style.display = 'block';
-          },
+          onStart: showCard,
           clearProps: 'all'
         });
+        
+        function showCard() {
+          card.classList.remove('hidden');
+          card.style.display = 'block';
+        }
       } else {
-        // I'm hiding card
         gsap.to(card, {
           opacity: 0,
           scale: 0.8,
           duration: 0.3,
-          onComplete: function() {
-            card.classList.add('hidden');
-            card.style.display = 'none';
-          }
+          onComplete: hideCard
         });
+        
+        function hideCard() {
+          card.classList.add('hidden');
+          card.style.display = 'none';
+        }
       }
-    });
+    }
   }
   
   return {
@@ -621,9 +618,8 @@ const ProjectFilterModule = (function() {
 const TestimonialsModule = (function() {
   let currentSlide = 0;
   let autoplayInterval = null;
-  const AUTOPLAY_DELAY = 5000; // 5 seconds
+  const AUTOPLAY_DELAY = 5000;
   
-  // Testimonials Data Array
   const testimonialsData = [
     {
       quote: "Working with Ajay was an absolute pleasure. His attention to detail and creative approach brought our vision to life in ways we never imagined.",
@@ -663,32 +659,31 @@ const TestimonialsModule = (function() {
     
     if (!sliderContainer || !dotsContainer) return;
     
-    // I'm rendering testimonials
     renderTestimonials(sliderContainer);
-    
-    // I'm rendering dots
     renderDots(dotsContainer);
     
-    // I'm getting rendered elements
     const testimonialItems = document.querySelectorAll('.testimonials__item');
     const dots = document.querySelectorAll('.testimonials__dots .dot');
     
     if (testimonialItems.length === 0) return;
     
-    // I'm ensuring first slide is active
     testimonialItems[0].classList.add('active');
     dots[0].classList.add('active');
     
-    // I'm adding click events to dots
-    dots.forEach(function(dot, index) {
-      dot.addEventListener('click', function() {
+    dots.forEach(addDotClickHandler);
+    
+    function addDotClickHandler(dot, index) {
+      dot.addEventListener('click', handleDotClick);
+      
+      function handleDotClick() {
         goToSlide(index, testimonialItems, dots);
         resetAutoplay(testimonialItems, dots);
-      });
-    });
+      }
+    }
     
-    // I'm adding keyboard navigation
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', handleKeyboardNav);
+    
+    function handleKeyboardNav(e) {
       const testimonialsSection = document.querySelector('.testimonials');
       if (!testimonialsSection) return;
       
@@ -704,18 +699,18 @@ const TestimonialsModule = (function() {
           resetAutoplay(testimonialItems, dots);
         }
       }
-    });
+    }
     
-    // I'm starting auto-play
     startAutoplay(testimonialItems, dots);
     
-    // I'm pausing on hover
     const testimonialsSection = document.querySelector('.testimonials');
     if (testimonialsSection) {
       testimonialsSection.addEventListener('mouseenter', stopAutoplay);
-      testimonialsSection.addEventListener('mouseleave', function() {
+      testimonialsSection.addEventListener('mouseleave', handleMouseLeave);
+      
+      function handleMouseLeave() {
         startAutoplay(testimonialItems, dots);
-      });
+      }
     }
     
     console.log('Testimonials initialized with ' + testimonialsData.length + ' items');
@@ -724,7 +719,9 @@ const TestimonialsModule = (function() {
   function renderTestimonials(container) {
     container.innerHTML = '';
     
-    testimonialsData.forEach(function(testimonial, index) {
+    testimonialsData.forEach(createTestimonialElement);
+    
+    function createTestimonialElement(testimonial) {
       const item = document.createElement('div');
       item.className = 'testimonials__item';
       item.innerHTML = `
@@ -738,48 +735,62 @@ const TestimonialsModule = (function() {
         </div>
       `;
       container.appendChild(item);
-    });
+    }
   }
   
   function renderDots(container) {
     container.innerHTML = '';
     
-    testimonialsData.forEach(function(testimonial, index) {
+    testimonialsData.forEach(createDotElement);
+    
+    function createDotElement(testimonial, index) {
       const dot = document.createElement('button');
       dot.className = 'dot';
       dot.setAttribute('aria-label', `Go to testimonial ${index + 1}`);
       dot.setAttribute('type', 'button');
       container.appendChild(dot);
-    });
+    }
   }
   
   function goToSlide(index, items, dots) {
-    // I'm hiding current slide
     items[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
     
-    // I'm showing new slide
     currentSlide = index;
     items[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
   }
   
   function nextSlide(items, dots) {
-    const nextIndex = (currentSlide + 1) % items.length;
+    let nextIndex = currentSlide + 1;
+    
+    
+    if (nextIndex >= items.length) {
+      nextIndex = 0;
+    }
+    
     goToSlide(nextIndex, items, dots);
   }
   
   function previousSlide(items, dots) {
-    const prevIndex = (currentSlide - 1 + items.length) % items.length;
+    let prevIndex = currentSlide - 1;
+    
+    
+    if (prevIndex < 0) {
+      prevIndex = items.length - 1;
+    }
+    
     goToSlide(prevIndex, items, dots);
   }
   
   function startAutoplay(items, dots) {
     if (autoplayInterval) return;
     
-    autoplayInterval = setInterval(function() {
+    autoplayInterval = setInterval(handleAutoplayTick, AUTOPLAY_DELAY);
+    
+    function handleAutoplayTick() {
       nextSlide(items, dots);
-    }, AUTOPLAY_DELAY);
+    }
   }
   
   function stopAutoplay() {
@@ -805,44 +816,13 @@ const TestimonialsModule = (function() {
   };
 })();
 
-// Lazy Loading Images Module
-const LazyLoadModule = (function() {
-  function initLazyLoad() {
-    const images = document.querySelectorAll('img[data-src]');
-    
-    if (images.length === 0) return;
-    
-    const imageObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.classList.add('loaded');
-          observer.unobserve(img);
-        }
-      });
-    });
-    
-    images.forEach(function(img) {
-      imageObserver.observe(img);
-    });
-  }
-  
-  return {
-    init: initLazyLoad
-  };
-})();
+// Initialize all modules 
+NavigationModule.init();
+VideoPlayerModule.init();
+AnimationsModule.init();
+SmoothScrollModule.init();
+FormValidationModule.init();
+ProjectFilterModule.init();
+TestimonialsModule.init();
 
-// Initialize all modules when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  NavigationModule.init();
-  VideoPlayerModule.init();
-  AnimationsModule.init();
-  SmoothScrollModule.init();
-  FormValidationModule.init();
-  ProjectFilterModule.init();
-  TestimonialsModule.init();
-  LazyLoadModule.init();
-  
-  console.log('Portfolio initialized successfully');
-});
+console.log('Portfolio initialized successfully');
