@@ -1,0 +1,229 @@
+Portfolio Developer Documentation
+Student Name: Ajay Chakaravarthy Antony Raj
+Course: Interactive Media Design
+Term: Level-3 (Fall)
+Last Updated: October 21, 2025
+
+1. Project Overview
+
+Goals
+
+My portfolio site aims to:
+
+Showcase my design and development skills through a visually compelling, interactive experience
+Demonstrate proficiency in modern web technologies including HTML5, CSS3, JavaScript, PHP, MySQL, and GSAP
+Attract potential employers and clients by highlighting my best work and technical capabilities
+Serve as a living document of my growth as a developer throughout the program
+
+Objectives
+
+Feature 4-6 completed projects with detailed case studies
+Implement smooth, engaging animations using GSAP to enhance user experience
+Build a fully functional contact system with database integration
+Create a responsive, mobile-first design that works seamlessly across all devices
+Demonstrate clean, maintainable code with proper documentation
+Achieve excellent performance metrics (90+ Lighthouse scores)
+
+
+2. Technical Documentation
+2.1 Tech Stack
+Frontend:
+
+HTML5 (semantic markup)
+CSS3 with SASS/SCSS (modular styling)
+JavaScript (ES6+)
+GSAP (GreenSock Animation Platform) for advanced animations
+
+Backend:
+
+PHP 8.x for server-side logic
+MySQL for database management
+
+Development Tools:
+
+Git/GitHub for version control
+VS Code as primary IDE
+Browser DevTools for debugging
+Responsive design testing tools
+
+Hosting:
+
+[To be determined - likely shared hosting with PHP/MySQL support]
+
+2.2 System Architecture
+Static Components:
+
+Home/Hero Section: Eye-catching landing area with animated introduction
+About Page: Personal bio, skills breakdown, downloadable resume
+Navigation: Fixed/sticky nav with smooth scroll functionality
+
+Dynamic Components (PHP/MySQL):
+
+Projects Gallery: Database-driven project showcase
+
+Admin can add/edit/delete projects via backend
+Each project includes: title, description, technologies used, images, live link, GitHub link
+
+
+Contact Form: User submissions stored in database
+
+Fields: Name, Email, Subject, Message, Timestamp
+PHP validation and sanitization
+Optional email notification to admin
+
+
+Optional Blog Section: CMS-style content management for posts/updates
+
+3. Sitemap
+
+Home (/)
+├── Hero Section (animated introduction)
+├── Featured Projects (preview)
+└── Call-to-Action
+
+About (/about)
+├── Personal Introduction
+├── Skills & Technologies
+├── Education & Experience
+└── Resume Download
+
+Projects (/projects)
+├── Project Grid 
+└── Individual Project Details
+
+Contact (/contact)
+├── Contact Form (PHP/MySQL)
+├── Social Media Links
+└── Location/Availability Info
+
+ Blog (/blog)
+├── Blog Posts List
+└── Individual Post View
+
+4. ERD Diagram
+
+Check the images folder, where i have my ERD diagram for my portfolio website.
+
+5. Page Structure Decision
+Approach: Hybrid Multi-Page Site with Smooth Scroll Features
+I've chosen a multi-page structure for better SEO, load times, and user navigation clarity:
+Why Multi-Page:
+
+Each page can be individually optimized for specific keywords
+Faster initial page load (not loading all content at once)
+Clearer navigation structure for users
+Easier to maintain and scale
+
+Smooth Scroll Integration:
+
+Within pages (e.g., Home page sections)
+Navigation transitions between pages with fade effects
+Anchor links on longer pages (About, Projects)
+
+Page Breakdown:
+
+Home: Hero section + Featured projects preview + About snippet
+About: Full biography with animated skill bars and timeline
+Projects: Grid layout with filtering, each card links to detail view
+Project Detail: Individual page for each project (PHP template)
+Contact: Form and information page
+
+
+6. GreenSock (GSAP) Enhancements
+Planned Animations
+Homepage:
+
+Hero Text Animation: Staggered fade-in and slide-up for heading and subheading
+Logo/Icon Animation: Morphing SVG animation on load
+Scroll Indicator: Animated bouncing arrow/icon
+
+Navigation:
+
+Smooth Scroll: Custom scrollTo plugin for anchor links
+Nav Background: Fade in background on scroll past hero
+
+About Page:
+
+Skill Bars: Animated progress bars triggered on scroll into view
+Timeline Animations: Fade and slide items as user scrolls
+
+Projects Page:
+
+Grid Items: Staggered fade-in animation on load
+Hover Effects: Scale and shadow transitions (enhanced with GSAP)
+Image Parallax: Background images move at different speeds during scroll
+
+General:
+
+Page Transitions: Fade out/in when navigating between pages
+Scroll Reveal: Elements fade and slide into view as user scrolls (ScrollTrigger plugin)
+
+GSAP Plugins Used
+
+ScrollTrigger: For scroll-based animations
+ScrollToPlugin: For smooth scroll navigation
+Core GSAP: For timeline-based animations
+
+
+7. Additional Interactivity
+Planned Interactive Features
+Project Cards:
+
+Hover state: Lift effect (translateY) with shadow increase
+Overlay appears showing "View Project" button
+Quick-view lightbox for image galleries (using a lightweight library like GLightbox)
+
+Contact Form:
+
+Real-time validation feedback (JavaScript)
+Success/error messages with fade animations
+AJAX submission (optional: submit without page reload)
+
+Image Galleries:
+
+Lightbox/modal for project screenshots
+Thumbnail navigation within lightbox
+Keyboard controls (arrows, escape)
+
+Filter System (Projects Page):
+
+Filter projects by technology (HTML/CSS/JavaScript/PHP)
+Animated transitions when filtering (GSAP stagger)
+Active filter button states
+
+Responsive Navigation:
+
+Mobile hamburger menu with smooth open/close animation
+Full-screen overlay menu on mobile with staggered link animations
+Implementation Resources
+Lightbox:
+
+GLightbox: https://github.com/biati-digital/glightbox
+Lightweight, responsive, customizable
+Implementation via CDN or npm
+
+Form Validation:
+
+Custom JavaScript validation following W3C standards
+Reference: MDN Web Docs - Client-side form validation
+
+Filter System:
+
+Pure JavaScript filter logic
+Tutorial reference: JavaScript Array filter() method
+GSAP for smooth transitions between filter states
+
+Responsive Menu:
+
+Custom JavaScript toggle functionality
+GSAP timeline for staggered animation
+Tutorial: Modern responsive navigation patterns
+
+
+Development Timeline
+Week 7: Planning, Developer Doc, initial GitHub setup
+Week 8-9: HTML structure, SASS setup, responsive layout
+Week 10: Database design and PHP backend implementation
+Week 11: GSAP animations and interactivity
+Week 12: Testing, refinement, and deployment
+Week 13: Final presentation preparation

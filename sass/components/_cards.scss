@@ -1,0 +1,400 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// Base Card
+.card {
+  background-color: $bg-light;
+  border-radius: $radius-large;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  @include transition(all);
+  
+  &:hover {
+    box-shadow: $shadow-medium;
+    transform: translateY(-4px);
+  }
+}
+
+// Project Card
+.project-card {
+  display: block;
+  background-color: $bg-light;
+  border-radius: $radius-large;
+  overflow: hidden;
+  box-shadow: $shadow-small;
+  text-decoration: none;
+  opacity: 1;
+  visibility: visible;
+  @include transition(all);
+  
+  &:hover {
+    box-shadow: $shadow-large;
+    transform: translateY(-8px);
+  }
+  
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: $bg-section;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      @include transition(transform);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba($primary-color, 0.7) 100%
+      );
+      opacity: 0;
+      @include transition(opacity);
+    }
+  }
+  
+  &:hover &__image {
+    img {
+      transform: scale(1.05);
+    }
+    
+    &::after {
+      opacity: 1;
+    }
+  }
+  
+  &__content {
+    padding: $spacing-lg;
+    position: relative;
+  }
+  
+  &__number {
+    position: absolute;
+    top: -30px;
+    right: $spacing-md;
+    width: 60px;
+    height: 60px;
+    background-color: $accent-color;
+    color: $text-light;
+    border-radius: $radius-round;
+    @include flex-center;
+    font-family: $font-primary;
+    font-size: 24px;
+    font-weight: 800;
+    box-shadow: $shadow-medium;
+    z-index: 1;
+  }
+  
+  &__title {
+    font-family: $font-primary;
+    font-size: $font-size-large;
+    font-weight: 600;
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+    margin-top: $spacing-md;
+    line-height: 1.3;
+  }
+  
+  &__description {
+    font-size: $font-size-small;
+    color: $text-muted;
+    line-height: 1.6;
+    margin-bottom: $spacing-sm;
+    @include line-clamp(3);
+  }
+  
+  &__tags {
+    display: flex;
+    gap: $spacing-xs;
+    flex-wrap: wrap;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__links {
+    display: flex;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+  }
+}
+
+// Tag
+.tag {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: rgba($accent-color, 0.1);
+  color: $accent-color;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: $radius-large;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  @include transition(all);
+  
+  &:hover {
+    background-color: rgba($accent-color, 0.2);
+  }
+}
+
+// Testimonial Card
+.testimonials__item {
+  background-color: $light-gray;
+  padding: $spacing-xl;
+  border-radius: $radius-large;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 1;
+  visibility: visible;
+  
+  p {
+    font-family: $font-secondary;
+    font-size: $font-size-large;
+    font-style: italic;
+    color: $text-dark;
+    line-height: 1.8;
+    margin: 0;
+  }
+  
+  &::before {
+    content: '"';
+    font-size: 4rem;
+    color: $accent-color;
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    line-height: 0;
+    display: block;
+    margin-bottom: $spacing-md;
+  }
+}
+
+// Skills Category Card
+.skills__category {
+  background-color: $primary-color;
+  padding: $spacing-xl;
+  border-radius: $radius-large;
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  @include transition(all);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-large;
+  }
+  
+  h3 {
+    font-family: $font-primary;
+    font-size: $font-size-md;
+    font-weight: 700;
+    color: $text-light;
+    margin-bottom: $spacing-xs;
+    text-decoration: underline;
+    text-decoration-color: $accent-color;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+  
+  p {
+    font-family: $font-secondary;
+    font-size: $font-size-small;
+    color: rgba($text-light, 0.8);
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
+  }
+}
+
+.skills__icons {
+  display: flex;
+  gap: $spacing-sm;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: $spacing-md;
+  background-color: rgba($text-light, 0.1);
+  border: 2px solid rgba($text-light, 0.2);
+  border-radius: 40px;
+  
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    @include transition(transform);
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Stats Card (for About page)
+.about__stats-item {
+  background-color: $secondary-color;
+  padding: $spacing-lg;
+  border-radius: $radius-large;
+  text-align: center;
+  min-width: 200px;
+  flex: 1;
+  max-width: 250px;
+  opacity: 1;
+  visibility: visible;
+  @include transition(all);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-large;
+  }
+  
+  .stats-icon {
+    font-size: 48px;
+    color: $text-light;
+    margin-bottom: $spacing-sm;
+  }
+  
+  h3 {
+    color: $text-light;
+    font-size: $font-size-base;
+    text-transform: uppercase;
+    margin-bottom: $spacing-xs;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  
+  p {
+    color: $text-light;
+    font-size: $font-size-xl;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+// Card Grid Layouts
+.card-grid {
+  display: grid;
+  gap: $spacing-lg;
+  
+  &--2 {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: #{$breakpoint-desktop - 1px}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--4 {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: #{$breakpoint-desktop - 1px}) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// Timeline Card (for About page)
+.timeline__content {
+  background-color: $bg-section;
+  padding: $spacing-md;
+  border-radius: $radius-medium;
+  box-shadow: $shadow-small;
+  opacity: 1;
+  visibility: visible;
+  
+  h3 {
+    color: $primary-color;
+    font-size: $font-size-large;
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+  }
+  
+  p {
+    color: $text-muted;
+    font-size: $font-size-small;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.timeline__date {
+  color: $accent-color;
+  font-size: $font-size-small;
+  font-weight: 600;
+  margin-bottom: $spacing-xs;
+  display: block;
+}
+
+// Contact Card (for Contact page)
+.contact-card {
+  background-color: $bg-light;
+  padding: $spacing-xl;
+  border-radius: $radius-large;
+  box-shadow: $shadow-medium;
+  text-align: center;
+  opacity: 1;
+  visibility: visible;
+  @include transition(all);
+  
+  &:hover {
+    box-shadow: $shadow-large;
+    transform: translateY(-4px);
+  }
+  
+  &__icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto $spacing-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($accent-color, 0.1);
+    border-radius: $radius-round;
+    color: $accent-color;
+    font-size: 24px;
+  }
+  
+  &__title {
+    font-family: $font-primary;
+    font-size: $font-size-large;
+    font-weight: 600;
+    color: $text-dark;
+    margin-bottom: $spacing-xs;
+  }
+  
+  &__info {
+    font-size: $font-size-base;
+    color: $text-muted;
+    
+    a {
+      color: $accent-color;
+      text-decoration: none;
+      @include transition(color);
+      
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
