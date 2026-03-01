@@ -1,14 +1,32 @@
+<?php
+
+use Portfolio\Database;
+
+spl_autoload_register(function ($class) {
+    $class = str_replace('Portfolio\\', '', $class);
+    $class = str_replace("\\", DIRECTORY_SEPARATOR, $class);
+    $filepath = __DIR__ . '/includes/classes/' . $class . '.php';
+    $filepath = str_replace("/", DIRECTORY_SEPARATOR, $filepath);
+    require_once $filepath;
+});
+
+$database = new Database();
+$projects = $database->query('SELECT projects.*, categories.name AS category_name FROM projects LEFT JOIN categories ON projects.category_id = categories.id ORDER BY projects.created_at ASC');
+
+// I'm mapping category names to filter slugs for the JS filter system
+$categoryMap = [
+    'Web Development' => 'web-design',
+    'UI/UX Design'    => 'branding',
+    'Motion Design'   => 'motion'
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Ajay Chakaravarthy Antony Raj">
-  <title>Contact - Ajay Antony Raj</title>
+  <meta name="description" content="Projects by Ajay Chakaravarthy Antony Raj">
+  <title>Projects - Ajay Antony Raj</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +36,7 @@ ini_set('display_errors', 1);
   <link rel="stylesheet" href="css/grid.css">
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
-<body data-page="contact">
+<body data-page="projects">
   
   <!-- Header -->
   <header class="header">
@@ -28,15 +46,13 @@ ini_set('display_errors', 1);
           <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
         </a>
         
-        <!-- Desktop Navigation -->
         <div class="nav__menu">
           <a href="index.html" class="nav__link">HOME</a>
           <a href="about.html" class="nav__link">ABOUT</a>
-          <a href="projects.html" class="nav__link">WORK</a>
-          <a href="contact.php" class="nav__link active">CONTACT</a>
+          <a href="projects.php" class="nav__link active">WORK</a>
+          <a href="contact.php" class="nav__link">CONTACT</a>
         </div>
         
-        <!-- Social Icons (Desktop Only) -->
         <div class="nav__social-icons">
           <a href="mailto:contact.ajayantony@gmail.com" class="nav__social-link" aria-label="Email">
             <i class="fas fa-envelope"></i>
@@ -49,7 +65,6 @@ ini_set('display_errors', 1);
           </a>
         </div>
         
-        <!-- Hamburger Menu -->
         <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
           <span class="hamburger__line"></span>
           <span class="hamburger__line"></span>
@@ -69,7 +84,7 @@ ini_set('display_errors', 1);
       <nav class="mobile-menu__list">
         <a href="index.html" class="mobile-menu__link">HOME</a>
         <a href="about.html" class="mobile-menu__link">ABOUT</a>
-        <a href="projects.html" class="mobile-menu__link">WORK</a>
+        <a href="projects.php" class="mobile-menu__link">WORK</a>
         <a href="contact.php" class="mobile-menu__link active">CONTACT</a>
       </nav>
       
@@ -90,103 +105,57 @@ ini_set('display_errors', 1);
   <!-- Main Content -->
   <main>
     
-    <!-- Contact Header -->
-    <section class="contact__header">
+    <!-- Projects Header -->
+    <section class="projects-header">
       <div class="container">
-        <h1>Contact Me</h1>
-        <p>Let's turn ideas into awesome things. Your move.</p>
-      </div>
-    </section>
-    
-    <!-- Contact Form -->
-    <section class="contact__form-section">
-      <div class="container">
-
-        <!-- AJAX feedback div -->
-        <div id="feedback"></div>
+        <h1 class="projects__title">Featured Projects</h1>
         
-        <form class="contact__form" id="contactForm" method="post" action="includes/send.php">
-          
-          <!-- Honeypot - bots fill this, real users never see it -->
-          <div style="display:none" aria-hidden="true">
-            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" id="first_name" name="first_name" placeholder="First Name*" required>
-              <span class="form-error"></span>
-            </div>
-            
-            <div class="form-group">
-              <input type="text" id="last_name" name="last_name" placeholder="Last Name*" required>
-              <span class="form-error"></span>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <input type="email" id="email" name="email" placeholder="E-mail*" required>
-              <span class="form-error"></span>
-            </div>
-            
-            <div class="form-group">
-              <input type="text" id="social" name="social" placeholder="Social Media (Optional)">
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <textarea id="message" name="message" rows="6" placeholder="Message*" required minlength="10"></textarea>
-            <span class="form-error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="botCheck">What is 2 + 3?</label>
-            <input type="text" id="botCheck" name="botCheck" placeholder="Your answer" required>
-          </div>
-          
-          <div class="text-center">
-            <button type="submit" class="btn btn--primary btn-submit">Hit It!</button>
-          </div>
-          
-        </form>
+        <div class="projects__filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web-design">Web Design</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+        </div>
       </div>
     </section>
     
-    <!-- Contact Methods -->
-    <section class="contact__methods">
+    <!-- Projects Grid -->
+    <section class="projects-section">
       <div class="container">
-        <div class="contact__methods-grid">
+        <div class="projects__grid">
           
-          <div class="contact__methods-item">
-            <div class="contact-icon">
-              <i class="fab fa-linkedin"></i>
+          <?php foreach ($projects as $index => $project): ?>
+          <?php $filterSlug = $categoryMap[$project['category_name']] ?? 'web-design'; ?>
+          <div class="project-card" data-category="<?php echo $filterSlug; ?>">
+            <div class="project-card__image">
+              <img src="<?php echo $project['image']; ?>" alt="<?php echo $project['title']; ?>">
             </div>
-            <h3>LinkedIn</h3>
-            <a href="https://www.linkedin.com/in/ajayantonyraj/" target="_blank" class="btn btn--small btn--primary">
-              Click Here
-            </a>
-          </div>
-          
-          <div class="contact__methods-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
+            <div class="project-card__content">
+              <div class="project-card__number"><?php echo $index + 1; ?></div>
+              <h3 class="project-card__title"><?php echo $project['title']; ?></h3>
+              <p class="project-card__description"><?php echo $project['description']; ?></p>
+              <div class="project-card__tags">
+                <?php 
+                $tags = explode(',', $project['technologies']);
+                foreach ($tags as $tag): ?>
+                <span class="tag"><?php echo trim($tag); ?></span>
+                <?php endforeach; ?>
+              </div>
+              <div class="project-card__links">
+                <?php if (!empty($project['github_url'])): ?>
+                <a href="<?php echo $project['github_url']; ?>" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+                <?php endif; ?>
+                <?php if (!empty($project['live_url'])): ?>
+                <a href="<?php echo $project['live_url']; ?>" target="_blank" class="btn btn--small btn--primary">
+                  Live Site
+                </a>
+                <?php endif; ?>
+              </div>
             </div>
-            <h3>E-Mail</h3>
-            <a href="mailto:contact.ajayantony@gmail.com" class="btn btn--small btn--primary">
-              Click Here
-            </a>
           </div>
-          
-          <div class="contact__methods-item">
-            <div class="contact-icon">
-              <i class="fab fa-github"></i>
-            </div>
-            <h3>GitHub</h3>
-            <a href="https://github.com/ajaymystic" target="_blank" class="btn btn--small btn--primary">
-              Click Here
-            </a>
-          </div>
+          <?php endforeach; ?>
           
         </div>
       </div>
@@ -207,8 +176,8 @@ ini_set('display_errors', 1);
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="projects.html">Work</a></li>
-          <li><a href="contact.php" class="active">Contact</a></li>
+          <li><a href="projects.php" class="active">Work</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
       </nav>
       
@@ -226,14 +195,10 @@ ini_set('display_errors', 1);
       
       <div class="footer__copyright">
         <p>&copy; <?php echo date('Y'); ?> Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
-        <p><?php 
-          date_default_timezone_set('America/Toronto');
-          echo date('F j, Y, g:i a');
-        ?></p>
       </div>
     </div>
   </footer>
-  
+
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -241,6 +206,5 @@ ini_set('display_errors', 1);
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
   <!-- Main module -->
   <script type="module" src="js/main.js"></script>
-  
 </body>
 </html>

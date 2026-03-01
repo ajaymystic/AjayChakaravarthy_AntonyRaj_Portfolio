@@ -1,90 +1,64 @@
 <?php
-// Error reporting, turn off when we launch
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+    header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json; charset=UTF-8");
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    // Recipient email 
-    $recipient = 'no-replay@ajayantonyraj.ca';
-    $subject = 'Portfolio Contact Form - New Message';
-    
-    // Get raw form data
-    $first_raw = $_POST['first_name'] ?? '';
-    $last_raw = $_POST['last_name'] ?? '';
-    $email_raw = $_POST['email'] ?? '';
-    $msg_raw = $_POST['message'] ?? '';
-    $social_raw = $_POST['social'] ?? ''; 
+    $db_host = 'localhost';
+    $db_user = 'root';
+    $db_pass = '';
+    $db_name = 'ajay_portfolio';
 
-    // Sanitize inputs
-    $first = trim(strip_tags($first_raw));
-    $last = trim(strip_tags($last_raw));
+    $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    $errors = array();
 
-    $visitor_name = trim($first . ' ' . $last);
-    
-    // Clean and validate email
-    $email_clean = str_replace(["\r", "\n", "%0a", "%0d"], '', trim($email_raw));
-    $visitor_email = filter_var($email_clean, FILTER_VALIDATE_EMAIL);
-
-    $message = trim(strip_tags($msg_raw));
-    $social = trim(strip_tags($social_raw));
-
-    // Validation array
-    $fail = [];
-    
-    if($first == '') {
-        $fail[] = 'first_name';
-    }
-    if($last == '') {
-        $fail[] = 'last_name';
-    }
-    if(!$visitor_email) {
-        $fail[] = 'email';
-    }
-    if($message == '') {
-        $fail[] = 'message';
-    }
-    
-    // If validation fails
-    if(!empty($fail)) {
-        $error_msg = urlencode('Please fix: ' . implode(', ', $fail));
-        header("Location: ../contact.php?msg=$error_msg");
+    // I'm checking the honeypot — bots fill this, real users never see it
+    $honeypot = $_POST['website'] ?? '';
+    if ($honeypot !== '') {
+        echo json_encode(array("errors" => array("Bot detected.")));
         exit;
     }
 
-    // Build email body
-    $emailBody = "You have received a new message from your portfolio website:\r\n\r\n";
-    $emailBody .= "Name: {$visitor_name}\r\n";
-    $emailBody .= "Email: {$visitor_email}\r\n";
-    if($social != '') {
-        $emailBody .= "Social Media: {$social}\r\n";
+    // I'm validating the bot math question — answer is 5
+    $botCheck = $_POST['botCheck'] ?? '';
+    if ($botCheck !== '5') {
+        $errors[] = "Incorrect answer to the bot check question.";
     }
-    $emailBody .= "\r\nMessage:\r\n{$message}\r\n\r\n";
-    $emailBody .= "---\r\n";
-    $emailBody .= "Sent: " . date('F j, Y, g:i a') . "\r\n";
 
-    // Email headers
-    $fromAddress = "noreply@ajayantoneyraj-portfolio.com";
-    $headers = "From: Portfolio Website <{$fromAddress}>\r\n";
-    $headers .= "Reply-To: {$visitor_email}\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $first_name = mysqli_real_escape_string($connection, $_POST['first_name'] ?? '');
+    if ($first_name == NULL) {
+        $errors[] = "First name field is empty.";
+    }
 
-    // Send email
-    $send = mail($recipient, $subject, $emailBody, $headers);
+    $last_name = mysqli_real_escape_string($connection, $_POST['last_name'] ?? '');
+    if ($last_name == NULL) {
+        $errors[] = "Last name field is empty.";
+    }
 
-    if($send) {
-        $thankyou = urlencode("Thank you for your message, " . htmlspecialchars($visitor_name, ENT_QUOTES, 'UTF-8') . "! You'll get a reply within 24 hours.");
-        header("Location: ../contact.php?msg=$thankyou&success=1");
-        exit();
+    $email = $_POST['email'] ?? '';
+    if ($email == NULL) {
+        $errors[] = "Email field is empty.";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "\"" . $email . "\" is not a valid email address.";
+    }
+
+    $social = mysqli_real_escape_string($connection, $_POST['social'] ?? '');
+
+    $message = mysqli_real_escape_string($connection, $_POST['message'] ?? '');
+    if ($message == NULL) {
+        $errors[] = "Message field is empty.";
+    }
+
+    $errcount = count($errors);
+    if ($errcount > 0) {
+        $errmsg = array();
+        for ($i = 0; $i < $errcount; $i++) {
+            $errmsg[] = $errors[$i];
+        }
+        echo json_encode(array("errors" => $errmsg));
     } else {
-        $error = urlencode("Message failed to send. Please try again later.");
-        header("Location: ../contact.php?msg=$error");
-        exit();
+        $querystring = "INSERT INTO contacts(first_name, last_name, email, social, message, created_at) VALUES('" . $first_name . "','" . $last_name . "','" . $email . "','" . $social . "','" . $message . "', NOW())";
+        mysqli_query($connection, $querystring);
+        echo json_encode(array("message" => "Thanks " . $first_name . "! Your message has been received. I'll get back to you within 24 hours."));
     }
-
-} else {
-    echo "<p>Invalid request method</p>";
-}
 ?>
