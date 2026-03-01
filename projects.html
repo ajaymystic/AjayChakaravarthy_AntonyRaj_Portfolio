@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects by Ajay Chakaravarthy Antony Raj">
+  <title>Projects - Ajay Antony Raj</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+<link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body data-page="projects">
+  
+  <!-- Header -->
+  <header class="header">
+  <div class="grid-con">
+    <nav class="header__nav col-span-4 m-col-span-12 l-col-span-12">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+      
+      <!-- Desktop Navigation (Show on Desktop Only) -->
+      <div class="nav__menu">
+        <a href="index.html" class="nav__link ">HOME</a>
+        <a href="about.html" class="nav__link">ABOUT</a>
+        <a href="projects.php" class="nav__link active">WORK</a>
+        <a href="contact.php" class="nav__link">CONTACT</a>
+      </div>
+      
+      <!-- Social Icons (Desktop Only) -->
+      <div class="nav__social-icons">
+        <a href="mailto:contact.ajayantony@gmail.com" class="nav__social-link" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/ajayantonyraj" class="nav__social-link" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ajaymystic" class="nav__social-link" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
+      <!-- Hamburger Menu (Mobile/Tablet) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <!-- Close Button -->
+  <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="mobile-menu__content">
+    <nav class="mobile-menu__list">
+      <a href="index.html" class="mobile-menu__link active">HOME</a>
+      <a href="about.html" class="mobile-menu__link">ABOUT</a>
+      <a href="projects.php" class="mobile-menu__link">WORK</a>
+      <a href="contact.php" class="mobile-menu__link">CONTACT</a>
+    </nav>
+    
+    <div class="mobile-menu__social">
+      <a href="mailto:your.email@example.com" class="mobile-menu__social-link" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/yourprofile" class="mobile-menu__social-link" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/yourprofile" class="mobile-menu__social-link" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+</div>
+  
+  <!-- Main Content -->
+  <main>
+    
+    <!-- Projects Header -->
+    <section class="projects-header">
+      <div class="container">
+        <h1 class="projects__title">Featured Projects</h1>
+        
+        <!-- Filter Buttons -->
+        <div class="projects__filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web-design">Web Design</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Projects Grid -->
+    <section class="projects-section">
+      <div class="container">
+        <div class="projects__grid">
+          
+          <!-- Project 1 -->
+          <div class="project-card" data-category="web-design">
+            <div class="project-card__image">
+              <img src="images/projects/industrynight.jpg" alt="Industry Night 2025">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">1</div>
+              <h3 class="project-card__title">Industry Night 2025</h3>
+              <p class="project-card__description">A dedicated showcase website for Interactive Media Design students to present their portfolios and achievements to industry professionals.</p>
+              <div class="project-card__tags">
+                <span class="tag">Web Design</span>
+                <span class="tag">UI/UX</span>
+                <span class="tag">Responsive</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/Alex4747-J/Group_7-Industry_Night.git" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="project-card" data-category="web-design">
+            <div class="project-card__image">
+              <img src="images/projects/luxbuds.jpg" alt="LuxAudio Buds">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">2</div>
+              <h3 class="project-card__title">Full Fledged Website - LuxAudio Buds</h3>
+              <p class="project-card__description">E-commerce platform for premium audio products featuring product showcases, shopping cart, and responsive design.</p>
+              <div class="project-card__tags">
+                <span class="tag">E-Commerce</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/ajaymystic/AntonyRaj_AjayChakaravarthy_EarBuds.git" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 3 -->
+          <div class="project-card" data-category="branding">
+            <div class="project-card__image">
+              <img src="images/projects/brandrefresh-7.jpg" alt="Brand Refresh - Seven">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">3</div>
+              <h3 class="project-card__title">Brand Refresh - Seven</h3>
+              <p class="project-card__description">Complete brand identity redesign including logo, color palette, typography, and brand guidelines.</p>
+              <div class="project-card__tags">
+                <span class="tag">Branding</span>
+                <span class="tag">Graphics</span>
+                <span class="tag">Identity</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/yourprofile/project3" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 4 -->
+          <div class="project-card" data-category="motion">
+            <div class="project-card__image">
+              <img src="images/projects/matchday.jpg" alt="Motion Graphics Reel">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">4</div>
+              <h3 class="project-card__title">Motion Graphics Showreel</h3>
+              <p class="project-card__description">Collection of animated graphics and video projects showcasing motion design skills.</p>
+              <div class="project-card__tags">
+                <span class="tag">Motion</span>
+                <span class="tag">After Effects</span>
+                <span class="tag">Animation</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/yourprofile/project4" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 5 -->
+          <div class="project-card" data-category="web-design">
+            <div class="project-card__image">
+              <img src="images/projects/earbuds.jpg" alt="LuxAudio Website">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">5</div>
+              <h3 class="project-card__title">3D Design</h3>
+              <p class="project-card__description">Built from scratch on Cinema4D</p>
+              <div class="project-card__tags">
+                <span class="tag">Portfolio</span>
+                <span class="tag">SASS</span>
+                <span class="tag">GSAP</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/yourprofile/portfolio" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 6 -->
+          <div class="project-card" data-category="branding">
+            <div class="project-card__image">
+              <img src="images/projects/squeezit.jpg" alt="Seven Design">
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__number">6</div>
+              <h3 class="project-card__title">Brand Refresh</h3>
+              <p class="project-card__description">Complete brand identity redesign including logo, color palette, typography, and brand guidelines.</p>
+              <div class="project-card__tags">
+                <span class="tag">Logo</span>
+                <span class="tag">Branding</span>
+                <span class="tag">Illustrator</span>
+              </div>
+              <div class="project-card__links">
+                <a href="https://github.com/yourprofile/logos" target="_blank" class="btn btn--small btn--outline">
+                  <i class="fab fa-github"></i> View Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Logo -->
+    <div class="footer__logo">
+      <a href="index.html">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="footer__nav">
+      <ul>
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.php" class="active">Work</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Social Links -->
+    <div class="footer__social">
+      <a href="mailto:contact.ajayantony@gmail.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/ajayantonyraj/" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ajaymystic" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="footer__copyright">
+      <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+ <!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<!-- Main module -->
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

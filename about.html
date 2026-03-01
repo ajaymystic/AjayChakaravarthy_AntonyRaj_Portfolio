@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Ajay Chakaravarthy Antony Raj - Digital Media Designer">
+  <title>About - Ajay Antony Raj</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body data-page="about">
+  
+  <!-- Header -->
+  <header class="header">
+  <div class="grid-con">
+    <nav class="header__nav col-span-4 m-col-span-12 l-col-span-12">
+      <a href="index.html" class="header__logo">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+      
+      <!-- Desktop Navigation (Show on Desktop Only) -->
+      <div class="nav__menu">
+        <a href="index.html" class="nav__link ">HOME</a>
+        <a href="about.html" class="nav__link active">ABOUT</a>
+        <a href="projects.php" class="nav__link">WORK</a>
+        <a href="contact.php" class="nav__link">CONTACT</a>
+      </div>
+      
+      <!-- Social Icons (Desktop Only) -->
+      <div class="nav__social-icons">
+        <a href="mailto:contact.ajayantony@gmail.com" class="nav__social-link" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/ajayantonyraj" class="nav__social-link" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/ajaymystic" class="nav__social-link" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
+      <!-- Hamburger Menu (Mobile/Tablet) -->
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobileMenu">
+  <!-- Close Button -->
+  <button class="mobile-menu__close" id="closeMenuBtn" aria-label="Close menu">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="mobile-menu__content">
+    <nav class="mobile-menu__list">
+      <a href="index.html" class="mobile-menu__link active">HOME</a>
+      <a href="about.html" class="mobile-menu__link">ABOUT</a>
+      <a href="projects.php" class="mobile-menu__link">WORK</a>
+      <a href="contact.php" class="mobile-menu__link">CONTACT</a>
+    </nav>
+    
+    <div class="mobile-menu__social">
+      <a href="mailto:contact.ajayantony@gmail.com" class="mobile-menu__social-link" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/ajayantonyraj" class="mobile-menu__social-link" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ajaymystic" class="mobile-menu__social-link" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+</div>
+  <!-- Main Content -->
+  <main>
+    
+    <!-- About Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <h1 class="about__title">About Me</h1>
+        
+        <div class="about__hero-image">
+          <img src="images/aboutme.jpg" alt="Ajay Antony Raj">
+        </div>
+        
+        <h2 class="about__subtitle">Yep, that's me AGAIN</h2>
+      </div>
+    </section>
+    
+    <!-- Bio Section -->
+    <section class="about-bio">
+      <div class="container">
+        <div class="about__bio">
+          <p>I'm a developer who likes to move fast and build things that feel alive. I jump into projects with the goal of making them smoother, sharper, and way more intuitive than they started. I love that moment when an idea turns into something you can click, touch, test, and break — then rebuild into something even better.</p>
+          
+          <p>I work with a mix of logic and instinct, pushing for clean structure but keeping enough flexibility to try ideas that don't exist yet. I'm always chasing that flow where the code lines up, the interface reacts instantly, and everything just clicks into place. Whether it's refining interactions, tightening performance, or turning a messy concept into a polished experience, I'm all about momentum and making the final result feel fast, responsive, and fun to use.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="about-stats">
+      <div class="container">
+        <div class="about__stats">
+          
+          <div class="about__stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Experience</h3>
+            <p>3+ Years</p>
+          </div>
+          
+          <div class="about__stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Completed</h3>
+            <p>7+ Projects</p>
+          </div>
+          
+          <div class="about__stats-item">
+            <div class="stats-icon">
+              <i class="fas fa-comment-dots"></i>
+            </div>
+            <h3>Contact Me</h3>
+            <p>Anytime</p>
+          </div>
+          
+        </div>
+        
+        <div class="text-center">
+          <a href="files/resume.pdf" class="btn btn--primary btn-download" download>
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Logo -->
+    <div class="footer__logo">
+      <a href="index.html">
+        <img src="images/logo.svg" alt="Ajay Antony Raj Logo">
+      </a>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="footer__nav">
+      <ul>
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Work</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+    </nav>
+    
+    <!-- Social Links -->
+    <div class="footer__social">
+      <a href="mailto:contact.ajayantony@gmail.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/ajayantonyraj/" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/ajaymystic" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="footer__copyright">
+      <p>&copy; 2025 Ajay Chakaravarthy Antony Raj. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+  
+ <!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<!-- Main module -->
+<script type="module" src="js/main.js"></script>
+  
+</body>
+</html>
