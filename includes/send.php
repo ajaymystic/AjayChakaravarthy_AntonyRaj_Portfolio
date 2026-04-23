@@ -1,64 +1,66 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 
-    $db_host = 'localhost';
-    $db_user = 'root';
-    $db_pass = '';
-    $db_name = 'ajay_portfolio';
+use Portfolio\Database;
 
-    $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-    $errors = array();
+spl_autoload_register(function ($class) {
+    $class    = str_replace('Portfolio\\', '', $class);
+    $class    = str_replace("\\", DIRECTORY_SEPARATOR, $class);
+    $filepath = __DIR__ . '/classes/' . $class . '.php';
+    $filepath = str_replace("/", DIRECTORY_SEPARATOR, $filepath);
+    require_once $filepath;
+});
 
-    // I'm checking the honeypot — bots fill this, real users never see it
-    $honeypot = $_POST['website'] ?? '';
-    if ($honeypot !== '') {
-        echo json_encode(array("errors" => array("Bot detected.")));
-        exit;
-    }
+$errors = [];
 
-    // I'm validating the bot math question — answer is 5
-    $botCheck = $_POST['botCheck'] ?? '';
-    if ($botCheck !== '5') {
-        $errors[] = "Incorrect answer to the bot check question.";
-    }
+// Honeypot — bots fill this hidden field, real users never see it
+$honeypot = $_POST['website'] ?? '';
+if ($honeypot !== '') {
+    echo json_encode(['errors' => ['Bot detected.']]);
+    exit;
+}
 
-    $first_name = mysqli_real_escape_string($connection, $_POST['first_name'] ?? '');
-    if ($first_name == NULL) {
-        $errors[] = "First name field is empty.";
-    }
+$first_name = trim($_POST['first_name'] ?? '');
+$last_name  = trim($_POST['last_name']  ?? '');
+$email      = trim($_POST['email']      ?? '');
+$social     = trim($_POST['social']     ?? '');
+$message    = trim($_POST['message']    ?? '');
 
-    $last_name = mysqli_real_escape_string($connection, $_POST['last_name'] ?? '');
-    if ($last_name == NULL) {
-        $errors[] = "Last name field is empty.";
-    }
+if ($first_name === '') { $errors[] = 'First name is required.'; }
+if ($last_name  === '') { $errors[] = 'Last name is required.'; }
+if ($email      === '') { $errors[] = 'Email is required.'; }
+if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = '"' . htmlspecialchars($email) . '" is not a valid email address.';
+}
+if ($message === '') { $errors[] = 'Message is required.'; }
 
-    $email = $_POST['email'] ?? '';
-    if ($email == NULL) {
-        $errors[] = "Email field is empty.";
-    }
+if (count($errors) > 0) {
+    echo json_encode(['errors' => $errors]);
+    exit;
+}
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "\"" . $email . "\" is not a valid email address.";
-    }
+try {
+    $db   = new Database();
+    $conn = $db->connect();
 
-    $social = mysqli_real_escape_string($connection, $_POST['social'] ?? '');
+    $stmt = $conn->prepare(
+        'INSERT INTO contacts (first_name, last_name, email, social, message, created_at)
+         VALUES (:first_name, :last_name, :email, :social, :message, NOW())'
+    );
 
-    $message = mysqli_real_escape_string($connection, $_POST['message'] ?? '');
-    if ($message == NULL) {
-        $errors[] = "Message field is empty.";
-    }
+    $stmt->execute([
+        ':first_name' => $first_name,
+        ':last_name'  => $last_name,
+        ':email'      => $email,
+        ':social'     => $social,
+        ':message'    => $message,
+    ]);
 
-    $errcount = count($errors);
-    if ($errcount > 0) {
-        $errmsg = array();
-        for ($i = 0; $i < $errcount; $i++) {
-            $errmsg[] = $errors[$i];
-        }
-        echo json_encode(array("errors" => $errmsg));
-    } else {
-        $querystring = "INSERT INTO contacts(first_name, last_name, email, social, message, created_at) VALUES('" . $first_name . "','" . $last_name . "','" . $email . "','" . $social . "','" . $message . "', NOW())";
-        mysqli_query($connection, $querystring);
-        echo json_encode(array("message" => "Thanks " . $first_name . "! Your message has been received. I'll get back to you within 24 hours."));
-    }
+    echo json_encode([
+        'message' => 'Thanks ' . htmlspecialchars($first_name) . '! Your message has been received. I\'ll get back to you within 24 hours.'
+    ]);
+
+} catch (Exception $e) {
+    echo json_encode(['errors' => ['Server error. Please try again later.']]);
+}
 ?>

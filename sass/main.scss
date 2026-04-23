@@ -1,8 +1,8 @@
-// 1. Abstracts - Load variables and mixins first
+// 1. Abstracts
 @use 'abstracts/variables' as *;
 @use 'abstracts/mixins' as *;
 
-// 2. Base styles
+// 2. Base
 @use 'base/reset';
 @use 'base/typography';
 
@@ -12,7 +12,10 @@
 // 4. Components
 @use 'components/header';
 @use 'components/footer';
-
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/forms';
+@use 'components/cursor';
 
 // 5. Pages
 @use 'pages/index';

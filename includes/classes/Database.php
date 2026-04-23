@@ -2,6 +2,7 @@
 namespace Portfolio;
 
 use PDO;
+use PDOException;
 
 class Database
 {
@@ -10,9 +11,10 @@ class Database
         $connection = $this->connect();
         $statement = $connection->prepare($query);
 
-       foreach ($bindings as $key => $value) {
-    $statement->bindValue(":$key", $value);
-}
+        foreach ($bindings as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $results;
@@ -20,30 +22,12 @@ class Database
 
     public function connect()
     {
-        $config = $this->getConfig();
-        $dsn = $this->getDsn();
-        $username = $config['username'];
-        $password = $config['password'];
-        return new PDO($dsn, $username, $password);
-    }
-
-    public function getConfig()
-    {
-        return [
-            'username' => 'root',
-            'password' => '',
-            'host'     => 'localhost',
-            'database' => 'ajay_portfolio',
-            'port'     => 3306
-        ];
-    }
-
-    public function getDsn()
-    {
-        $config = $this->getConfig();
-        $host = $config['host'];
-        $database = $config['database'];
-        $port = $config['port'];
-        return 'mysql:host=' . $host . ';dbname=' . $database . ';port=' . $port;
+        // I'm pulling config from the central file so credentials only live in one place
+        require_once __DIR__ . '/../config.php';
+        $config   = getDbConfig();
+        $dsn      = 'mysql:host=' . $config['host'] . ';dbname=' . $config['database'] . ';port=' . $config['port'] . ';charset=utf8mb4';
+        return new PDO($dsn, $config['username'], $config['password'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]);
     }
 }

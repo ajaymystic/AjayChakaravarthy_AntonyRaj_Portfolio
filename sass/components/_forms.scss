@@ -1,17 +1,18 @@
-
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
 .form-group {
   margin-bottom: $spacing-md;
-  
+
   label {
     display: block;
     font-family: $font-primary;
-    font-size: $font-size-small;
-    font-weight: 600;
-    color: $text-dark;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: $text-muted;
     margin-bottom: $spacing-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 }
 
@@ -19,10 +20,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: $spacing-md;
-  
-  @include tablet {
-    grid-template-columns: 1fr 1fr;
-  }
+
+  @include tablet { grid-template-columns: 1fr 1fr; }
 }
 
 input[type="text"],
@@ -32,97 +31,84 @@ input[type="url"],
 textarea,
 select {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 18px;
   font-family: $font-secondary;
-  font-size: $font-size-base;
-  color: $text-dark;
-  background-color: $light-gray;
-  border: 3px solid $primary-color;
-  border-radius: $radius-small;
+  font-size: $font-size-sm;
+  color: $text-primary;
+  background-color: $bg-surface;
+  border: 1px solid $border-medium;
+  border-radius: $radius-medium;
   @include transition(all);
-  
-  &::placeholder {
-    color: $text-muted;
-  }
-  
+
+  &::placeholder { color: $text-dim; }
+
   &:focus {
     outline: none;
-    border-color: $accent-color;
-    box-shadow: 0 0 0 3px rgba($accent-color, 0.1);
+    border-color: $accent-cyan;
+    background-color: $bg-card;
+    box-shadow: 0 0 0 3px rgba($accent-cyan, 0.07);
   }
-  
+
   &:disabled {
-    background-color: $bg-section;
+    background-color: $bg-primary;
     cursor: not-allowed;
-    opacity: 0.6;
+    opacity: 0.5;
   }
-  
-  &.error {
-    border-color: $secondary-color;
-  }
-  
-  &.success {
-    border-color: #10b981;
-  }
+
+  &.error   { border-color: $accent-red; }
+  &.success { border-color: #10b981; }
 }
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 140px;
 }
 
 .form-error {
   display: block;
-  font-size: $font-size-small;
-  color: $secondary-color;
+  font-size: $font-size-xs;
+  color: $accent-red;
   margin-top: $spacing-xs;
-  
-  &:empty {
-    display: none;
-  }
+
+  &:empty { display: none; }
 }
 
 .form-message {
   padding: $spacing-sm $spacing-md;
   border-radius: $radius-medium;
   margin-top: $spacing-md;
-  font-size: $font-size-small;
+  font-size: $font-size-sm;
   font-weight: 600;
-  
+
   &.success {
-    background-color: rgba(16, 185, 129, 0.1);
+    background-color: rgba(16, 185, 129, 0.07);
     color: #10b981;
-    border: 2px solid #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.25);
   }
-  
+
   &.error {
-    background-color: rgba($secondary-color, 0.1);
-    color: $secondary-color;
-    border: 2px solid $secondary-color;
+    background-color: rgba($accent-red, 0.07);
+    color: $accent-red;
+    border: 1px solid rgba($accent-red, 0.25);
   }
-  
-  &:empty {
-    display: none;
-  }
+
+  &:empty { display: none; }
 }
 
-// Checkbox & Radio
 input[type="checkbox"],
 input[type="radio"] {
   width: 18px;
   height: 18px;
   margin-right: $spacing-xs;
   cursor: pointer;
+  accent-color: $accent-red;
 }
 
-// Form Actions
 .form-actions {
   display: flex;
   gap: $spacing-sm;
   justify-content: flex-end;
   margin-top: $spacing-lg;
-  
-  &--center {
-    justify-content: center;
-  }
+
+  &--center { justify-content: center; }
 }

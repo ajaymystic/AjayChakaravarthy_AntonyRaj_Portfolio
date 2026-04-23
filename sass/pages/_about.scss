@@ -5,42 +5,227 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-#bio {
-    background-color: $bg-light;
-    
+.about-hero {
+  padding: $spacing-xxl 0 $spacing-xl;
+  background-color: $bg-primary;
+  text-align: center;
+
+  .about__title {
+    @include heading-1;
+    margin-bottom: $spacing-lg;
+  }
+
+  .about__hero-image {
+    max-width: 700px;
+    margin: 0 auto $spacing-lg;
+    border-radius: $radius-large;
+    overflow: hidden;
+    border: 1px solid $border-medium;
+    box-shadow: $shadow-large;
+
     img {
-        width: 100%;
-        border-radius: $radius-medium;
-        margin-bottom: $spacing-md;
-        
-        @include tablet {
-            margin-bottom: 0;
-        }
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(8%);
+
+      @include mobile { height: 260px; }
     }
-    
-    h2 {
-        margin-bottom: $spacing-md;
-    }
-    
-    p {
-        margin-bottom: $spacing-md;
-    }
+  }
+
+  .about__subtitle {
+    font-family: $font-secondary;
+    font-size: $font-size-large;
+    color: $text-muted;
+    margin: 0;
+    font-style: italic;
+  }
 }
 
-#experience {
-    background-color: $bg-light;
-    
-    .card {
-        text-align: left;
-        
-        h4 {
-            font-size: 18px;
-            color: $secondary-color;
-            margin-top: $spacing-sm;
-        }
-        
-        p {
-            margin-bottom: $spacing-xs;
-        }
+.about-bio {
+  padding: $spacing-xxl 0;
+  background-color: $bg-surface;
+  border-top: 1px solid $border-subtle;
+  border-bottom: 1px solid $border-subtle;
+
+  .about__bio {
+    max-width: 780px;
+    margin: 0 auto;
+
+    p {
+      font-family: $font-secondary;
+      font-size: $font-size-large;
+      line-height: 1.9;
+      color: $text-muted;
+      margin-bottom: $spacing-md;
+
+      &:last-child { margin-bottom: 0; }
+
+      @include mobile { font-size: $font-size-base; }
     }
+  }
+}
+
+// ================================
+// TIMELINE
+// ================================
+
+.about-timeline {
+  padding: $spacing-xxl 0;
+  background-color: $bg-primary;
+  border-bottom: 1px solid $border-subtle;
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__label {
+    display: inline-block;
+    font-family: $font-primary;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: $accent-cyan;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: $spacing-sm;
+  }
+
+  h2 {
+    @include heading-2;
+    margin: 0;
+  }
+}
+
+.timeline {
+  max-width: 660px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: $spacing-xl;
+
+  // I'm drawing the gradient vertical line as a pseudo-element on the container
+  &::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, $accent-red, $accent-cyan);
+    border-radius: 1px;
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: $spacing-xl;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &__marker {
+    position: absolute;
+    left: -$spacing-xl;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: $radius-round;
+    background-color: $accent-red;
+    border: 3px solid $bg-primary;
+    box-shadow: 0 0 0 2px rgba($accent-red, 0.3), $shadow-glow-red;
+    z-index: 1;
+  }
+
+  &__date {
+    display: block;
+    font-family: $font-primary;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: $accent-cyan;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__content {
+    background-color: $bg-card;
+    border: 1px solid $border-subtle;
+    border-radius: $radius-medium;
+    padding: $spacing-md $spacing-lg;
+    @include transition(all);
+
+    &:hover {
+      border-color: rgba($accent-red, 0.25);
+      transform: translateX(4px);
+    }
+
+    h3 {
+      font-family: $font-primary;
+      font-size: $font-size-large;
+      font-weight: 700;
+      color: $text-primary;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $text-muted;
+      margin: 0;
+      line-height: 1.6;
+    }
+  }
+}
+
+// ================================
+// STATS SECTION
+// ================================
+
+.about-stats {
+  padding: $spacing-xxl 0;
+  background-color: $bg-surface;
+  border-top: 1px solid $border-subtle;
+  text-align: center;
+}
+
+.about__stats-simple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+
+  @include mobile { gap: 2rem; }
+}
+
+.about__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+
+  &-number {
+    font-family: $font-primary;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800;
+    color: $text-primary;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  &-label {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $text-muted;
+  }
+}
+
+.about__stat-divider {
+  width: 1px;
+  height: 60px;
+  background: $border-medium;
+
+  @include mobile { display: none; }
 }
