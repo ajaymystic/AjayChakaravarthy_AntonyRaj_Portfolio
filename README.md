@@ -1,110 +1,73 @@
-# Ajay Chakaravarthy Antony Raj — Portfolio 🚀
+# The Portfolio of Ajay Chakaravarthy Antony Raj - Full Stack Developer 🚀
 
-Hey there! I'm Ajay — a designer and developer who loves building things that look great and work even better. This portfolio is the result of two years of late nights, countless cups of coffee, and a genuine passion for interactive media design.
+Welcome to my personal portfolio repository!  
+This portfolio showcases my work, skills, and projects that reflect my journey as a Web Developer.  
+Here, you'll find a variety of projects that highlight my abilities including front-end development, back-end integration, responsive design, and interactive animations.
 
 ![Image of Full Stack Dev](images/image.png)
-
-If you're a recruiter, employer, or just someone curious about my work — welcome. Take a look around.
-
-🌐 **Live Site:** [https://ajayantonyraj.ca](https://ajayantonyraj.ca)  
-📁 **GitHub:** [https://github.com/ajaymystic](https://github.com/ajaymystic)
 
 ---
 
 ## 📋 Table of Contents
-- [About](#about)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Installation](#installation)
-- [Admin Panel](#admin-panel)
-- [Contact](#contact)
+- [About](#-about-)
+- [Skills](#-skills-)
+- [Features](#-features-)
+- [Installation](#-installation-)
+- [Contact](#-contact-)
 
 ---
 
 ## 👨‍💻 About
-
-I'm a Level 4 Interactive Media Design student at Fanshawe College with a focus on front-end development, motion design, and UI/UX. I build fast, responsive, and visually engaging web experiences.
-
-This portfolio was built entirely from scratch — no templates, no Bootstrap, no shortcuts. Every animation, every component, every database query was written by hand.
-
----
-
-## 🛠️ Tech Stack
-
-**Frontend:**
-- HTML5 (semantic markup)
-- CSS3 + SASS/SCSS (modular, compiled to minified production file)
-- JavaScript ES6+ (modular architecture)
-- GSAP + ScrollTrigger (animations)
-
-**Backend:**
-- PHP 8.x
-- MySQL (PDO with prepared statements)
-
-**Tools:**
-- Git / GitHub
-- VS Code
-- XAMPP (local development)
+This portfolio was created to demonstrate my expertise and growth in web development.  
+Each project provides a hands-on demonstration of different tools, technologies, and problem-solving techniques.  
+I hope this portfolio gives you an insight into my approach to tackling challenges and creating impactful solutions.
 
 ---
 
-## ✨ Features
+## 🥷 Skills
 
-- ⚡️ Mobile-first responsive layout using a custom grid system
-- 🎬 GSAP scroll animations and transitions
-- 🗂️ Database-driven projects page (PHP + MySQL)
-- 📬 AJAX contact form with real-time validation
-- 🔐 Password-protected admin panel (CMS)
-- 🧩 ES6 module architecture
-- 🎨 SASS with partials compiled to minified CSS
-- 🍔 Animated hamburger mobile menu
-- 💬 Testimonials slider with keyboard navigation
+### Languages 🛠️
+- HTML5  
+- CSS3  
+- JavaScript  
+- PHP  
+- SQL  
 
----
+### Frameworks & Libraries
+- GSAP (GreenSock Animation Platform)  
+- SASS/SCSS  
 
-## ⚙️ Installation
+### Tools
+- Git / GitHub  
+- VS Code   
 
-To run this portfolio locally:
-
-1. Clone this repository:
-```bash
-git clone https://github.com/ajaymystic/AjayChakaravarthy_AntonyRaj_Portfolio.git
-```
-
-2. Move the project folder into your XAMPP `htdocs` directory
-
-3. Import the database:
-   - Open phpMyAdmin
-   - Create a database called `ajay-portfolio`
-   - Import the SQL schema (tables: projects, categories, users, contacts, testimonials)
-
-4. Update `includes/classes/Database.php` with your local credentials
-
-5. Start Apache and MySQL in XAMPP
-
-6. Visit `http://localhost/Portfolio-Final`
+### Technologies
+- MySQL Database  
+- Responsive Design   
+- Form Validation  
 
 ---
 
-## 🔐 Admin Panel
-
-The portfolio includes a password-protected CMS admin panel at `/admin/login.php` that allows you to:
-
-- ➕ Add new projects
-- ✏️ Edit existing projects
-- 🗑️ Delete projects
-- 📋 View all submissions from the contact form
-
----
-
-## 📬 Contact
-
-Have a project in mind? Let's talk!
-
-- 📧 Email: [contact.ajayantony@gmail.com](mailto:contact.ajayantony@gmail.com)
-- 💼 LinkedIn: [ajayantonyraj](https://www.linkedin.com/in/ajayantonyraj/)
-- 🐙 GitHub: [ajaymystic](https://github.com/ajaymystic)
+## 📋 Features
+- ⚡️ Fully Responsive  
+- ⚡️ Valid HTML5 & CSS3  
+- ⚡️ GSAP Smooth Animations  
+- ⚡️ Dynamic Content with PHP & MySQL  
+- ⚡️ Interactive Contact Form  
+- ⚡️ Mobile-First Design  
 
 ---
+## Installation
+- To run the portfolio locally:
 
-*Built with ❤️ by Ajay Chakaravarthy Antony Raj — Fanshawe College, Interactive Media Design, 2026*
+- Clone this repository
+Navigate into the project directory:
+
+- Open the index.html file in your browser, or if using a local server, start the server and navigate to localhost to view.
+---
+## Contact
+Feel free to reach out if you’d like to collaborate or have any questions!
+
+LinkedIn: Ajay Chakaravarthy Antony Raj
+
+Thank you for visiting my portfolio!

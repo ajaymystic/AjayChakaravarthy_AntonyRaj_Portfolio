@@ -2,135 +2,73 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:color';
 
-// Google Fonts Import
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-// Body Text
 body {
   font-family: $font-secondary;
   font-size: $font-size-base;
   font-weight: 400;
-  color: $text-dark;
+  color: $text-primary;
   line-height: 1.6;
 }
 
-// Headings
-h1 {
-  margin-bottom: $spacing-md;
-  @include heading-1;
-}
+h1 { margin-bottom: $spacing-md; @include heading-1; }
+h2 { margin-bottom: $spacing-md; @include heading-2; }
+h3 { margin-bottom: $spacing-sm; @include heading-3; }
 
-h2 {
-  margin-bottom: $spacing-md;
-  @include heading-2;
-}
-
-h3 {
-  margin-bottom: $spacing-sm;
-  @include heading-3;
-}
-
-h4,
-h5,
-h6 {
+h4, h5, h6 {
   font-family: $font-primary;
   font-weight: 600;
   margin-bottom: $spacing-sm;
+  color: $text-primary;
 }
 
-// Paragraphs
 p {
   margin-bottom: $spacing-sm;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
+  &:last-child { margin-bottom: 0; }
 }
 
-// Links
 a {
-  color: $accent-color;
+  color: $accent-cyan;
   text-decoration: none;
   @include transition(color);
-  
-  &:hover {
-    color: color.adjust($accent-color, $lightness: -10%);
-  }
+  &:hover { color: color.adjust($accent-cyan, $lightness: 10%); }
 }
 
-// Strong & Bold
-strong,
-b {
-  font-weight: 700;
-}
+strong, b { font-weight: 700; }
+em, i { font-style: italic; }
+small { font-size: $font-size-small; }
 
-// Emphasis & Italic
-em,
-i {
-  font-style: italic;
-}
-
-// Small Text
-small {
-  font-size: $font-size-small;
-}
-
-// Code
-code,
-pre {
+code, pre {
   font-family: 'Courier New', monospace;
-  background-color: $bg-section;
-  padding: 2px 4px;
+  background-color: $bg-card;
+  padding: 2px 6px;
   border-radius: $radius-small;
+  color: $accent-cyan;
+  font-size: 0.9em;
 }
 
-// Utility Classes
-.text-center {
-  text-align: center;
-}
+.text-center   { text-align: center; }
+.text-left     { text-align: left; }
+.text-right    { text-align: right; }
+.text-uppercase { text-transform: uppercase; letter-spacing: 0.05em; }
+.text-muted    { color: $text-muted; }
+.text-light    { color: $text-primary; }
+.text-accent   { color: $accent-cyan; }
+.text-red      { color: $accent-red; }
 
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-uppercase {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.text-muted {
-  color: $text-muted;
-}
-
-.text-light {
-  color: $text-light;
-}
-
-.text-primary {
-  color: $primary-color;
-}
-
-.text-secondary {
-  color: $secondary-color;
-}
-
-// Section Titles - FIXED: All properties BEFORE @include
 .section-title {
   text-align: center;
   margin-bottom: $spacing-lg;
   position: relative;
   @include heading-2;
-  
+
   &::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 4px;
-    background-color: $accent-color;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, $accent-red, $accent-cyan);
     margin: $spacing-sm auto 0;
     border-radius: 2px;
   }

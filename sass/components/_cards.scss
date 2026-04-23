@@ -9,7 +9,7 @@
   opacity: 1;
   visibility: visible;
   @include transition(all);
-  
+
   &:hover {
     box-shadow: $shadow-medium;
     transform: translateY(-4px);
@@ -19,27 +19,28 @@
 // Project Card
 .project-card {
   display: block;
-  background-color: $bg-light;
+  background-color: $bg-card;
   border-radius: $radius-large;
   overflow: hidden;
-  box-shadow: $shadow-small;
+  border: 1px solid $border-subtle;
   text-decoration: none;
   opacity: 1;
   visibility: visible;
   @include transition(all);
-  
+
   &:hover {
-    box-shadow: $shadow-large;
-    transform: translateY(-8px);
+    border-color: rgba($accent-red, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba($accent-red, 0.15);
   }
-  
+
   &__image {
     position: relative;
     width: 100%;
     height: 250px;
     overflow: hidden;
-    background-color: $bg-section;
-    
+    background-color: $bg-surface;
+
     img {
       width: 100%;
       height: 100%;
@@ -47,63 +48,88 @@
       display: block;
       @include transition(transform);
     }
-    
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba($primary-color, 0.7) 100%
-      );
-      opacity: 0;
-      @include transition(opacity);
+  }
+
+  // I'm using a hover reveal div instead of ::after so I can put content inside it
+  &__hover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba($bg-primary, 0.97) 0%,
+      rgba($bg-primary, 0.65) 55%,
+      transparent 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: $spacing-md;
+    opacity: 0;
+    transform: translateY(8px);
+    @include transition(all);
+
+    &-cta {
+      font-family: $font-primary;
+      font-size: $font-size-xs;
+      font-weight: 700;
+      color: $text-primary;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: $spacing-xs;
+
+      i {
+        font-size: 11px;
+        transition: transform 0.2s ease;
+      }
     }
   }
-  
-  &:hover &__image {
-    img {
-      transform: scale(1.05);
-    }
-    
-    &::after {
-      opacity: 1;
+
+  &:hover &__image img {
+    transform: scale(1.06);
+  }
+
+  &:hover &__hover {
+    opacity: 1;
+    transform: translateY(0);
+
+    .project-card__hover-cta i {
+      transform: translateX(4px);
     }
   }
-  
+
   &__content {
     padding: $spacing-lg;
     position: relative;
   }
-  
+
   &__number {
     position: absolute;
     top: -30px;
     right: $spacing-md;
-    width: 60px;
-    height: 60px;
-    background-color: $accent-color;
-    color: $text-light;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, $accent-red, rgba($accent-red, 0.7));
+    color: $text-primary;
     border-radius: $radius-round;
     @include flex-center;
     font-family: $font-primary;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
-    box-shadow: $shadow-medium;
+    box-shadow: $shadow-glow-red;
     z-index: 1;
   }
-  
+
   &__title {
     font-family: $font-primary;
     font-size: $font-size-large;
-    font-weight: 600;
-    color: $text-dark;
+    font-weight: 700;
+    color: $text-primary;
     margin-bottom: $spacing-sm;
     margin-top: $spacing-md;
     line-height: 1.3;
   }
-  
+
   &__description {
     font-size: $font-size-small;
     color: $text-muted;
@@ -111,14 +137,14 @@
     margin-bottom: $spacing-sm;
     @include line-clamp(3);
   }
-  
+
   &__tags {
     display: flex;
     gap: $spacing-xs;
     flex-wrap: wrap;
     margin-bottom: $spacing-sm;
   }
-  
+
   &__links {
     display: flex;
     gap: $spacing-sm;
@@ -129,18 +155,19 @@
 // Tag
 .tag {
   display: inline-block;
-  padding: 6px 14px;
-  background-color: rgba($accent-color, 0.1);
-  color: $accent-color;
-  font-size: 11px;
+  padding: 5px 12px;
+  background-color: rgba($accent-cyan, 0.08);
+  color: $accent-cyan;
+  font-size: 10px;
   font-weight: 700;
   border-radius: $radius-large;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba($accent-cyan, 0.15);
   @include transition(all);
-  
+
   &:hover {
-    background-color: rgba($accent-color, 0.2);
+    background-color: rgba($accent-cyan, 0.15);
   }
 }
 
@@ -154,7 +181,7 @@
   margin: 0 auto;
   opacity: 1;
   visibility: visible;
-  
+
   p {
     font-family: $font-secondary;
     font-size: $font-size-large;
@@ -163,7 +190,7 @@
     line-height: 1.8;
     margin: 0;
   }
-  
+
   &::before {
     content: '"';
     font-size: 4rem;
@@ -178,35 +205,37 @@
 
 // Skills Category Card
 .skills__category {
-  background-color: $primary-color;
+  background-color: $bg-card;
+  border: 1px solid $border-subtle;
   padding: $spacing-xl;
   border-radius: $radius-large;
   text-align: center;
   opacity: 1;
   visibility: visible;
   @include transition(all);
-  
+
   &:hover {
     transform: translateY(-4px);
-    box-shadow: $shadow-large;
+    border-color: rgba($accent-red, 0.25);
+    box-shadow: 0 0 28px rgba($accent-red, 0.07);
   }
-  
+
   h3 {
     font-family: $font-primary;
     font-size: $font-size-md;
     font-weight: 700;
-    color: $text-light;
+    color: $text-primary;
     margin-bottom: $spacing-xs;
     text-decoration: underline;
-    text-decoration-color: $accent-color;
+    text-decoration-color: $accent-red;
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
   }
-  
+
   p {
     font-family: $font-secondary;
     font-size: $font-size-small;
-    color: rgba($text-light, 0.8);
+    color: $text-muted;
     margin-bottom: $spacing-lg;
     line-height: 1.6;
   }
@@ -219,25 +248,24 @@
   align-items: center;
   flex-wrap: wrap;
   padding: $spacing-md;
-  background-color: rgba($text-light, 0.1);
-  border: 2px solid rgba($text-light, 0.2);
+  background-color: rgba($text-primary, 0.04);
+  border: 1px solid $border-subtle;
   border-radius: 40px;
-  
+
   img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
     @include transition(transform);
-    
-    &:hover {
-      transform: scale(1.1);
-    }
+
+    &:hover { transform: scale(1.15); }
   }
 }
 
-// Stats Card (for About page)
+// Stats Card
 .about__stats-item {
-  background-color: $secondary-color;
+  background-color: $bg-card;
+  border: 1px solid $border-subtle;
   padding: $spacing-lg;
   border-radius: $radius-large;
   text-align: center;
@@ -247,32 +275,34 @@
   opacity: 1;
   visibility: visible;
   @include transition(all);
-  
+
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: $shadow-large;
+    transform: translateY(-6px);
+    border-color: rgba($accent-cyan, 0.25);
+    box-shadow: 0 0 28px rgba($accent-cyan, 0.07);
   }
-  
+
   .stats-icon {
-    font-size: 48px;
-    color: $text-light;
+    font-size: 36px;
+    color: $accent-cyan;
     margin-bottom: $spacing-sm;
   }
-  
+
   h3 {
-    color: $text-light;
-    font-size: $font-size-base;
+    color: $text-muted;
+    font-size: $font-size-xs;
     text-transform: uppercase;
     margin-bottom: $spacing-xs;
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
   }
-  
+
   p {
-    color: $text-light;
+    color: $text-primary;
     font-size: $font-size-xl;
-    font-weight: 700;
+    font-weight: 800;
     margin: 0;
+    font-family: $font-primary;
   }
 }
 
@@ -280,88 +310,41 @@
 .card-grid {
   display: grid;
   gap: $spacing-lg;
-  
+
   &--2 {
     grid-template-columns: repeat(2, 1fr);
-    
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
+    @include mobile { grid-template-columns: 1fr; }
   }
-  
+
   &--3 {
     grid-template-columns: repeat(3, 1fr);
-    
-    @media (max-width: #{$breakpoint-desktop - 1px}) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
+    @media (max-width: #{$breakpoint-desktop - 1px}) { grid-template-columns: repeat(2, 1fr); }
+    @include mobile { grid-template-columns: 1fr; }
   }
-  
+
   &--4 {
     grid-template-columns: repeat(4, 1fr);
-    
-    @media (max-width: #{$breakpoint-desktop - 1px}) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
+    @media (max-width: #{$breakpoint-desktop - 1px}) { grid-template-columns: repeat(2, 1fr); }
+    @include mobile { grid-template-columns: 1fr; }
   }
 }
 
-// Timeline Card (for About page)
-.timeline__content {
-  background-color: $bg-section;
-  padding: $spacing-md;
-  border-radius: $radius-medium;
-  box-shadow: $shadow-small;
-  opacity: 1;
-  visibility: visible;
-  
-  h3 {
-    color: $primary-color;
-    font-size: $font-size-large;
-    font-weight: 600;
-    margin-bottom: $spacing-xs;
-  }
-  
-  p {
-    color: $text-muted;
-    font-size: $font-size-small;
-    line-height: 1.6;
-    margin: 0;
-  }
-}
-
-.timeline__date {
-  color: $accent-color;
-  font-size: $font-size-small;
-  font-weight: 600;
-  margin-bottom: $spacing-xs;
-  display: block;
-}
-
-// Contact Card (for Contact page)
+// Contact Card
 .contact-card {
-  background-color: $bg-light;
+  background-color: $bg-card;
   padding: $spacing-xl;
   border-radius: $radius-large;
-  box-shadow: $shadow-medium;
+  border: 1px solid $border-subtle;
   text-align: center;
   opacity: 1;
   visibility: visible;
   @include transition(all);
-  
+
   &:hover {
-    box-shadow: $shadow-large;
+    border-color: rgba($accent-cyan, 0.3);
     transform: translateY(-4px);
   }
-  
+
   &__icon {
     width: 60px;
     height: 60px;
@@ -369,32 +352,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba($accent-color, 0.1);
+    background-color: rgba($accent-cyan, 0.08);
     border-radius: $radius-round;
-    color: $accent-color;
+    color: $accent-cyan;
     font-size: 24px;
   }
-  
+
   &__title {
     font-family: $font-primary;
     font-size: $font-size-large;
     font-weight: 600;
-    color: $text-dark;
+    color: $text-primary;
     margin-bottom: $spacing-xs;
   }
-  
+
   &__info {
     font-size: $font-size-base;
     color: $text-muted;
-    
+
     a {
-      color: $accent-color;
-      text-decoration: none;
+      color: $accent-cyan;
       @include transition(color);
-      
-      &:hover {
-        color: $secondary-color;
-      }
+      &:hover { color: $accent-red; }
     }
   }
 }

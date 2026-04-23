@@ -9,7 +9,7 @@
   gap: $spacing-xs;
   padding: 14px 36px;
   font-family: $font-primary;
-  font-size: $font-size-base;
+  font-size: $font-size-sm;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -19,184 +19,141 @@
   border: none;
   @include transition(all);
   @include focus-visible;
-  
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 
-// Primary Button - ENHANCED VISIBILITY
 .btn--primary {
-  background-color: $secondary-color;
-  color: $text-light;
-  border: none;
-  box-shadow: 0 4px 14px rgba($secondary-color, 0.4);
-  
+  background-color: $accent-red;
+  color: $text-primary;
+  box-shadow: $shadow-glow-red;
+
   &:hover:not(:disabled) {
-    background-color: color.adjust($secondary-color, $lightness: 5%);
+    background-color: color.adjust($accent-red, $lightness: 6%);
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba($secondary-color, 0.5);
+    box-shadow: 0 10px 30px rgba(255, 45, 85, 0.55);
   }
-  
-  &:active {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba($secondary-color, 0.4);
-  }
+
+  &:active { transform: translateY(-1px); }
 }
 
-// Outline Button
 .btn--outline {
   background-color: transparent;
-  color: $text-dark;
-  border: 2px solid $text-dark;
-  
+  color: $text-primary;
+  border: 1px solid $border-medium;
+
   &:hover:not(:disabled) {
-    background-color: $text-dark;
-    color: $text-light;
+    background-color: $border-subtle;
+    border-color: $border-strong;
     transform: translateY(-2px);
-    box-shadow: $shadow-medium;
   }
-  
-  &:active {
-    transform: translateY(0);
-  }
+
+  &:active { transform: translateY(0); }
 }
 
-// Outline Light (for dark backgrounds)
 .btn--outline-light {
   background-color: transparent;
-  color: $text-light;
-  border: 2px solid $text-light;
-  
+  color: $text-primary;
+  border: 1px solid $border-strong;
+
   &:hover:not(:disabled) {
-    background-color: $text-light;
-    color: $primary-color;
+    background-color: rgba($text-primary, 0.06);
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba($text-light, 0.3);
   }
 }
 
-// Accent Button
 .btn--accent {
-  background-color: $accent-color;
-  color: $text-light;
+  background-color: $accent-cyan;
+  color: $bg-primary;
   border: none;
-  box-shadow: 0 4px 14px rgba($accent-color, 0.3);
-  
+  font-weight: 800;
+  box-shadow: $shadow-glow-cyan;
+
   &:hover:not(:disabled) {
-    background-color: color.adjust($accent-color, $lightness: -10%);
+    background-color: color.adjust($accent-cyan, $lightness: 8%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba($accent-color, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 200, 255, 0.55);
   }
-  
-  &:active {
-    transform: translateY(0);
-  }
+
+  &:active { transform: translateY(0); }
 }
 
-// Secondary Button
 .btn--secondary {
-  background-color: $primary-color;
-  color: $text-light;
-  border: none;
-  
+  background-color: $bg-card;
+  color: $text-primary;
+  border: 1px solid $border-medium;
+
   &:hover:not(:disabled) {
-    background-color: color.adjust($primary-color, $lightness: 10%);
+    background-color: $bg-card-hover;
+    border-color: $border-strong;
     transform: translateY(-2px);
-    box-shadow: $shadow-medium;
   }
 }
 
-// Ghost Button
 .btn--ghost {
   background-color: transparent;
-  color: $text-dark;
-  border: 2px solid transparent;
-  
+  color: $text-muted;
+  border: 1px solid transparent;
+
   &:hover:not(:disabled) {
-    background-color: rgba($primary-color, 0.1);
-    border-color: rgba($primary-color, 0.2);
+    color: $text-primary;
+    border-color: $border-medium;
+    background-color: $border-subtle;
   }
 }
 
-// Link Button (minimal style)
 .btn--link {
   background-color: transparent;
-  color: $accent-color;
+  color: $accent-cyan;
   border: none;
   padding: $spacing-xs $spacing-sm;
   text-decoration: underline;
   text-underline-offset: 4px;
-  
+
   &:hover:not(:disabled) {
-    color: color.adjust($accent-color, $lightness: -10%);
+    color: color.adjust($accent-cyan, $lightness: 10%);
     text-decoration-thickness: 2px;
   }
 }
 
-// Button Sizes
 .btn--small {
-  padding: 10px 24px;
-  font-size: $font-size-small;
+  padding: 9px 22px;
+  font-size: $font-size-xs;
   letter-spacing: 0.08em;
+  border-radius: $radius-medium;
 }
 
 .btn--large {
   padding: 18px 56px;
-  font-size: $font-size-large;
+  font-size: $font-size-base;
   letter-spacing: 0.12em;
 }
 
-// Full Width Button
-.btn--full {
-  width: 100%;
-  justify-content: center;
-}
+.btn--full { width: 100%; justify-content: center; }
 
-// Icon Buttons
 .btn--icon {
   width: 44px;
   height: 44px;
   padding: 0;
   border-radius: $radius-round;
-  
-  &.btn--small {
-    width: 36px;
-    height: 36px;
-    font-size: 16px;
-  }
-  
-  &.btn--large {
-    width: 52px;
-    height: 52px;
-    font-size: 24px;
-  }
-  
-  i {
-    margin: 0;
-  }
+
+  &.btn--small { width: 36px; height: 36px; font-size: 14px; }
+  &.btn--large { width: 52px; height: 52px; font-size: 22px; }
+
+  i { margin: 0; }
 }
 
-// Button with Icon
 .btn--with-icon {
   gap: $spacing-sm;
-  
-  i {
-    font-size: 1.2em;
-  }
-  
-  &.btn--icon-right {
-    flex-direction: row-reverse;
-  }
+  i { font-size: 1.1em; }
+  &.btn--icon-right { flex-direction: row-reverse; }
 }
 
-// Button Loading State
 .btn--loading {
   position: relative;
   pointer-events: none;
   color: transparent;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -207,99 +164,35 @@
     margin-left: -8px;
     margin-top: -8px;
     border: 2px solid transparent;
-    border-top-color: currentColor;
+    border-top-color: $text-primary;
     border-radius: 50%;
-    animation: button-loading-spinner 0.6s linear infinite;
+    animation: btn-spin 0.6s linear infinite;
   }
 }
 
-@keyframes button-loading-spinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes btn-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-// Button Group
 .btn-group {
   display: flex;
   gap: $spacing-md;
   flex-wrap: wrap;
-  
-  &--center {
-    justify-content: center;
-  }
-  
-  &--right {
-    justify-content: flex-end;
-  }
-  
-  &--vertical {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  &--compact {
-    gap: $spacing-xs;
-  }
+
+  &--center  { justify-content: center; }
+  &--right   { justify-content: flex-end; }
+  &--vertical { flex-direction: column; align-items: stretch; }
+  &--compact { gap: $spacing-xs; }
 }
 
-// Button attached (no gap between buttons)
-.btn-group--attached {
-  gap: 0;
-  
-  .btn {
-    border-radius: 0;
-    
-    &:first-child {
-      border-top-left-radius: $radius-large;
-      border-bottom-left-radius: $radius-large;
-    }
-    
-    &:last-child {
-      border-top-right-radius: $radius-large;
-      border-bottom-right-radius: $radius-large;
-    }
-  }
-}
-
-// Responsive Buttons
 @include mobile {
-  .btn {
-    padding: 12px 28px;
-    font-size: $font-size-sm;
-  }
-  
-  .btn--large {
-    padding: 14px 40px;
-    font-size: $font-size-base;
-  }
-  
-  .btn-group {
-    gap: $spacing-sm;
-    
-    &--mobile-stack {
-      flex-direction: column;
-      width: 100%;
-      
-      .btn {
-        width: 100%;
-      }
-    }
-  }
-}
-
-// Dark Mode Support (if needed)
-@media (prefers-color-scheme: dark) {
-  .btn--outline {
-    color: $text-light;
-    border-color: $text-light;
-    
-    &:hover:not(:disabled) {
-      background-color: $text-light;
-      color: $primary-color;
-    }
+  .btn { padding: 12px 26px; font-size: $font-size-xs; }
+  .btn--large { padding: 14px 38px; font-size: $font-size-sm; }
+  .btn-group { gap: $spacing-sm; }
+  .btn-group--mobile-stack {
+    flex-direction: column;
+    width: 100%;
+    .btn { width: 100%; }
   }
 }

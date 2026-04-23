@@ -6,107 +6,99 @@
 @use '../abstracts/mixins' as *;
 @use 'sass:color';
 
-#hero {
-    .hero-content {
-        @include tablet {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-    }
-}
+.contact__header {
+  padding: $spacing-xxl 0 $spacing-xl;
+  background-color: $bg-primary;
+  text-align: center;
+  border-bottom: 1px solid $border-subtle;
 
-#contact-section {
-    background-color: $bg-light;
-    
-    h2 {
-        margin-bottom: $spacing-md;
-    }
-    
-    p {
-        margin-bottom: $spacing-md;
-    }
-}
+  h1 {
+    @include heading-1;
+    margin-bottom: $spacing-sm;
+  }
 
-.contact-info {
-    margin-top: $spacing-lg;
-}
-
-.contact-item {
-    margin-bottom: $spacing-lg;
-    
-    h4 {
-        color: $primary-color;
-        margin-bottom: $spacing-xs;
-        font-size: 18px;
-    }
-    
-    p {
-        color: $text-muted;
-        margin-bottom: 0;
-    }
-    
-    a {
-        color: $secondary-color;
-        @include transition(color);
-        
-        &:hover {
-            color: color.adjust($secondary-color, $lightness: -10%);
-            text-decoration: underline;
-        }
-    }
-}
-.contact-form {
-    background-color: $bg-section;
-    padding: $spacing-lg;
-    border-radius: $radius-medium;
-    
-    @include mobile {
-        padding: $spacing-md;
-    }
-}
-
-.form-group {
-    margin-bottom: $spacing-md;
-    
-    label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: $spacing-xs;
-        color: $text-dark;
-    }
-    
-    input,
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #ddd;
-        border-radius: $radius-small;
-        font-family: $font-primary;
-        font-size: $font-size-base;
-        @include transition(border-color);
-        
-        &:focus {
-            outline: none;
-            border-color: $secondary-color;
-        }
-        
-        &::placeholder {
-            color: #999;
-        }
-    }
-    
-    textarea {
-        resize: vertical;
-        min-height: 150px;
-    }
-}
-
-.contact-form .btn {
+  p {
+    font-size: $font-size-large;
+    color: $text-muted;
     margin: 0;
-    width: 100%;
-    
-    @include tablet {
-        width: auto;
-    }
+  }
+}
+
+.contact__form-section {
+  padding: $spacing-xxl 0;
+  background-color: $bg-surface;
+}
+
+.contact__form {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-large;
+  padding: $spacing-xl;
+
+  @include mobile { padding: $spacing-lg $spacing-md; }
+}
+
+#feedback {
+  max-width: 700px;
+  margin: 0 auto $spacing-md;
+}
+
+.contact__methods {
+  padding: $spacing-xxl 0;
+  background-color: $bg-primary;
+  border-top: 1px solid $border-subtle;
+}
+
+.contact__methods-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  max-width: 700px;
+  margin: 0 auto;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+}
+
+.contact__methods-item {
+  text-align: center;
+  padding: $spacing-xl $spacing-md;
+  background-color: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-large;
+  @include transition(all);
+
+  &:hover {
+    border-color: rgba($accent-cyan, 0.3);
+    box-shadow: 0 0 24px rgba($accent-cyan, 0.08);
+    transform: translateY(-4px);
+  }
+
+  h3 {
+    font-family: $font-primary;
+    font-size: $font-size-base;
+    font-weight: 700;
+    color: $text-primary;
+    margin: $spacing-sm 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+}
+
+.contact-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($accent-cyan, 0.07);
+  border: 1px solid rgba($accent-cyan, 0.18);
+  border-radius: $radius-medium;
+  color: $accent-cyan;
+  font-size: 20px;
 }

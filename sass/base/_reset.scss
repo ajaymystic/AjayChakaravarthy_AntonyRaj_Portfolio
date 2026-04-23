@@ -1,109 +1,109 @@
 @use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 
-// ============================================
-// IMPORTANT: Your grid.css already handles:
-// - box-sizing: border-box
-// - margin/padding reset for body, p, h1-h5
-// - img, video max-width: 100%
-// ============================================
-
-// Additional body styles
 body {
   min-height: 100vh;
-  background-color: $bg-color;
+  background-color: $bg-primary;
   overflow-x: hidden;
 }
 
-// Smooth scrolling
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// Remove default list styling
-ul,
-ol {
-  list-style: none;
+// I'm using body::after for the grain so it works globally without touching every HTML file
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9996;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  background-repeat: repeat;
 }
 
-// Remove default button styling
-button {
-  background: none;
-  border: none;
-  font: inherit;
-  cursor: pointer;
+// Page transition overlay — JS fades this out on load, in before navigate
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background-color: $bg-primary;
+  z-index: 99998;
+  pointer-events: none;
+  opacity: 1;
 }
 
-// Remove default link styling
-a {
-  color: inherit;
-  text-decoration: none;
+// Preloader
+.preloader {
+  position: fixed;
+  inset: 0;
+  background-color: $bg-primary;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-// Form element defaults
-input,
-button,
-textarea,
-select {
-  font: inherit;
+.preloader__initials {
+  display: block;
+  font-family: $font-primary;
+  font-size: clamp(4.5rem, 14vw, 9rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, $accent-red 0%, $accent-cyan 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: $spacing-lg;
 }
 
-// Remove default fieldset styles
-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
+.preloader__bar-wrap {
+  width: 180px;
+  height: 2px;
+  background-color: $border-subtle;
+  border-radius: 1px;
+  overflow: hidden;
 }
 
-// Improve text rendering
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
+.preloader__bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, $accent-red, $accent-cyan);
+  border-radius: 1px;
 }
 
-// Remove default table styles
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+// Dark scrollbar
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: $bg-surface; }
+::-webkit-scrollbar-thumb { background: $accent-red; border-radius: 3px; }
+
+// I'm hiding the native cursor on hover-capable devices
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
 }
 
-// Focus visible
-:focus:not(:focus-visible) {
-  outline: none;
-}
+ul, ol { list-style: none; }
+button { background: none; border: none; font: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+input, button, textarea, select { font: inherit; }
+fieldset { border: none; padding: 0; margin: 0; }
+p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+table { border-collapse: collapse; border-spacing: 0; }
 
-:focus-visible {
-  outline: 2px solid $accent-color;
-  outline-offset: 2px;
-}
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible { outline: 2px solid $accent-cyan; outline-offset: 2px; }
 
-// Disabled state
-[disabled] {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
+[disabled] { cursor: not-allowed; opacity: 0.6; }
 
-// Remove spinner from number inputs
 input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
-// input[type="number"] {
-//   -moz-appearance: textfield;
-// }
-
-// Remove search input decoration
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-}
+input[type="search"]::-webkit-search-results-decoration { -webkit-appearance: none; }

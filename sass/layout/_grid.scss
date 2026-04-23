@@ -6,10 +6,6 @@
 // ============================================
 // Note: Your grid.css handles .grid-con and column classes
 
-.flex {
-  display: flex;
-}
-
 .flex-center {
   @include flex-center;
 }

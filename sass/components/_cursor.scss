@@ -1,0 +1,62 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// I'm hiding the system cursor for pointer devices and replacing it with the custom one
+@media (hover: hover) and (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: $accent-red;
+  border-radius: $radius-round;
+  pointer-events: none;
+  z-index: $z-cursor;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  transition: transform 0.1s ease, background-color 0.2s ease;
+
+  &.hovering {
+    transform: translate(-50%, -50%) scale(2.5);
+    background-color: $accent-cyan;
+  }
+
+  &.clicking {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba($accent-red, 0.55);
+  border-radius: $radius-round;
+  pointer-events: none;
+  z-index: $z-cursor - 1;
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+
+  &.hovering {
+    width: 58px;
+    height: 58px;
+    border-color: rgba($accent-cyan, 0.45);
+  }
+
+  &.clicking {
+    width: 26px;
+    height: 26px;
+    border-color: $accent-red;
+  }
+}
